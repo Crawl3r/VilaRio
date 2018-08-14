@@ -54,7 +54,7 @@
                                 <li><a style="color: red !important;" href="<?= HOME; ?>/cracha_venc"><b>Crachás Vencidos</b></a></li>
                             </ul>
                         </li>
-                        <!--
+                        
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Ponto
                                 <span class="caret"></span>
@@ -65,7 +65,7 @@
                                 </li>
                             </ul>
                         </li>
-                        -->
+                        
                     <?php } else { ?>
 
 
@@ -86,7 +86,7 @@
 								<li><a style="color: red !important;" href="<?= HOME; ?>/cracha_venc"><b>Crachás Vencidos</b></a></li>
                             </ul>
                         </li>
-                        <!--
+                        
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Ponto
                                 <span class="caret"></span>
@@ -102,7 +102,7 @@
                                 <?php } ?>
                             </ul>
                         </li>
-                        -->
+                        
                         <?php if ($_SESSION['nome_usuario'] == "Gisele") { ?>
                         
                             <li class="dropdown">

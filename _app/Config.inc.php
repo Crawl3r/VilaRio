@@ -25,6 +25,7 @@ define('REQUIRE_PATH','themes/' . THEME);
 //IMAGENS PADRÃO
 define('LOGO_NAV',  INCLUDE_PATH."/img/logo_nav.png");
 define('LOGO_NORM', INCLUDE_PATH."/img/logo_norm.png");
+define('SAVE_BTN',  INCLUDE_PATH."/img/save.png");
 
 //CATEGORIAS
 $categorias = array(

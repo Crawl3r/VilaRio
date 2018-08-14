@@ -42,6 +42,16 @@
                 <option>Operacional</option>
             </select>
             <br />
+            <label>Empresa: </label>
+            <select class="form-control" type="text" name="empresa">
+                <option></option>
+                <?php
+                foreach ($empresas_cr as $index => $key) {
+                    echo "<option value=\"$key\">$index</option>";
+                }
+                ?>
+            </select>
+            <br />
             <label>Senha: </label>
             <input required class="form-control" value="<?php echo senha(); ?>" type="text" name="senha" />
             <br /><br />
