@@ -125,32 +125,50 @@ if($_SESSION != array()){
                                             }
                                         }
                                     ?>
-                                    <form method="POST" class="form form-inline" action="<?= $ponto==array() ? 'php/add_reg.php' : '' ; ?>">
+                                    <form method="POST" class="form form-inline" action="<?= ($ponto==array() || ($i==2 || $i==3)) ? 'php/add_reg.php' : '' ; ?>">
                                         <input type="hidden" name="tipo" value="<?= $i ?>" />
                                         <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>" />
                                         <input type="hidden" name="dia" value="<?= $dt->format("Y-m-d") ?>" />
                                         <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto==array() ? date('H:i:s') : $registrado; ?>" 
-                                               <?= $ponto!=array() ?  "readonly" : "" ; ?> 
+                                               <?= ($ponto==array() || ($i==2 || $i==3)) ? "" : "readonly" ; ?> 
                                                <?= ($i==1 || $i==4) ? "readonly" : "" ; ?>/>
                                         <?php
-                                            //echo $i . "-" .  $entrada_yn;
-                                            if($ponto == array() && date('Y-m-d')==$dt->format("Y-m-d")){
-                                                if($i==4){
-                                                    if($entrada_yn){
-                                                       echo "<button type='submit' class='btn btn-xs btn-success'>"
-                                                        . "<img style='width: 20px;' src='".SAVE_BTN."' />"
-                                                        . "</button>";
-                                                    }else{
-                                                        ?><?php
-                                                        echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="É necessário que o horário de entrada seja registrado.">'
-                                                        . "<button disabled type='submit' class='btn btn-xs btn-danger'>"
-                                                        . "<img style='width: 20px;' src='".SAVE_BTN."' />"
-                                                        . "</button></span";
-                                                    }
+                                            //intervalos sempre editáveis
+                                            if($i==2 || $i==3){
+                                                //fica verdinho se ja tiver sido registrado e amarelo quando não
+                                                if($ponto == array()){
+                                                    echo "<button type='submit' class='btn btn-xs btn-warning'>"
+                                                    . "<img style='width: 20px;' src='".SAVE_BTN."' />"
+                                                    . "</button>";
                                                 }else{
                                                     echo "<button type='submit' class='btn btn-xs btn-success'>"
                                                     . "<img style='width: 20px;' src='".SAVE_BTN."' />"
                                                     . "</button>";
+                                                }
+                                            }else{
+                                                //entrada e saída nunca editáveis
+                                                //checa se ja tem registro e se o dia está correto
+                                                if($ponto == array() && date('Y-m-d')==$dt->format("Y-m-d")){
+                                                    //saída
+                                                    //só registra saída se tiver registro de entrada
+                                                    if($i==4){
+                                                        if($entrada_yn){
+                                                           echo "<button type='submit' class='btn btn-xs btn-success'>"
+                                                            . "<img style='width: 20px;' src='".SAVE_BTN."' />"
+                                                            . "</button>";
+                                                        }else{
+                                                            ?><?php
+                                                            echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="É necessário que o horário de entrada seja registrado.">'
+                                                            . "<button disabled type='submit' class='btn btn-xs btn-danger'>"
+                                                            . "<img style='width: 20px;' src='".SAVE_BTN."' />"
+                                                            . "</button></span>";
+                                                        }
+                                                    //entrada
+                                                    }else{
+                                                        echo "<button type='submit' class='btn btn-xs btn-success'>"
+                                                        . "<img style='width: 20px;' src='".SAVE_BTN."' />"
+                                                        . "</button>";
+                                                    }
                                                 }
                                             }
                                         ?>

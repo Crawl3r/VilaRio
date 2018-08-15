@@ -32,14 +32,11 @@
             <label>Nome: </label>
             <input required class="form-control" type="text" name="nome" />
             <br />
-            <label>Login: </label>
-            <input required class="form-control" type="text" name="login" />
-            <br />
             <label>Setor: </label>
             <select required class="form-control" name="setor">
                 <option></option>
                 <option>Simples</option>
-                <option>Operacional</option>
+                <!--<option>Operacional</option>-->
             </select>
             <br />
             <label>Empresa: </label>
@@ -51,6 +48,22 @@
                 }
                 ?>
             </select>
+            <br />
+            <label>Cargo: </label>
+            <input class="form-control" type="text" name="cargo" />
+            <br />
+            <label>N° de Registro: </label>
+            <input class="form-control" type="text" name="n_registro" />
+            <br />
+            <label>CTPS: </label>
+            <input class="form-control" type="text" name="ctps" />
+            <br />
+            <label>Admissão: </label>
+            <input class="form-control" type="date" name="admissao" />
+            
+            <br /><br />
+            <label>Login: </label>
+            <input required class="form-control" type="text" name="login" />
             <br />
             <label>Senha: </label>
             <input required class="form-control" value="<?php echo senha(); ?>" type="text" name="senha" />

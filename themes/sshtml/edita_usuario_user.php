@@ -40,6 +40,18 @@ $usuario = $crud->pdo_src('usuario','WHERE id_usuario = ' . $_GET['id']);
                 <option <?= $usuario[0]['setor_usuario']=='Operacional' ? 'selected' : '' ?> >Operacional</option>
             </select>
             <br />
+            <label>Cargo: </label>
+            <input value="<?php echo $usuario[0]['cargo'] ?>" class="form-control" type="text" name="cargo" />
+            <br />
+            <label>N° de Registro: </label>
+            <input value="<?php echo $usuario[0]['n_registro'] ?>" class="form-control" type="text" name="n_registro" />
+            <br />
+            <label>CTPS: </label>
+            <input value="<?php echo $usuario[0]['ctps'] ?>" class="form-control" type="text" name="ctps" />
+            <br />
+            <label>Admissão: </label>
+            <input value="<?php echo $usuario[0]['admissao'] ?>" class="form-control" type="date" name="admissao" />
+            <br />
             <input class="btn btn-default" type="submit" value="Salvar Alterações" />			
         </form>
 

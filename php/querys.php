@@ -288,7 +288,11 @@ class crud {
                 nome_usuario = ?,
 				login_usuario = ?,
                 setor_usuario = ?,
-                empresa = ?
+                empresa = ?,
+                cargo = ?,
+                n_registro = ?,
+                ctps = ?,
+                admissao = ?
 			WHERE
 				id_usuario = ?
 			
@@ -298,7 +302,11 @@ class crud {
 			$prepara->bindParam(2, $info['login'], PDO::PARAM_INT );
             $prepara->bindParam(3, $info['setor'], PDO::PARAM_INT );
             $prepara->bindParam(4, $info['empresa'], PDO::PARAM_INT );
-			$prepara->bindParam(5, $info['id'], PDO::PARAM_INT );
+            $prepara->bindParam(5, $info['cargo'], PDO::PARAM_INT );
+            $prepara->bindParam(6, $info['n_registro'], PDO::PARAM_INT );
+            $prepara->bindParam(7, $info['ctps'], PDO::PARAM_INT );
+            $prepara->bindParam(8, $info['admissao'], PDO::PARAM_INT );
+			$prepara->bindParam(9, $info['id'], PDO::PARAM_INT );
 			
 			$prepara->execute();
 			
@@ -321,12 +329,16 @@ class crud {
                 nivel_usuario,
                 setor_usuario,
                 ativo_usuario,
-                empresa
+                empresa,
+                cargo,
+                n_registro,
+                ctps,
+                admissao
 				
 			) 
 			VALUES 
 			(
-				?,?,?,'usuario',?,1,?
+				?,?,?,'usuario',?,1,?,?,?,?,?
 			)
 			
 			");
@@ -336,6 +348,10 @@ class crud {
 			$prepara->bindParam(3, $info['senha'], PDO::PARAM_INT );
             $prepara->bindParam(4, $info['setor'], PDO::PARAM_INT );
             $prepara->bindParam(5, $info['empresa'], PDO::PARAM_INT );
+            $prepara->bindParam(6, $info['cargo'], PDO::PARAM_INT );
+            $prepara->bindParam(7, $info['n_registro'], PDO::PARAM_INT );
+            $prepara->bindParam(8, $info['ctps'], PDO::PARAM_INT );
+            $prepara->bindParam(9, $info['admissao'], PDO::PARAM_INT );
             
 			$prepara->execute();
 			

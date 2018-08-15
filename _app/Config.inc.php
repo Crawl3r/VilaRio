@@ -26,6 +26,8 @@ define('REQUIRE_PATH','themes/' . THEME);
 define('LOGO_NAV',  INCLUDE_PATH."/img/logo_nav.png");
 define('LOGO_NORM', INCLUDE_PATH."/img/logo_norm.png");
 define('SAVE_BTN',  INCLUDE_PATH."/img/save.png");
+define('OK_BTN',  INCLUDE_PATH."/img/ok_icon.png");
+define('NO_BTN',  INCLUDE_PATH."/img/no_icon.png");
 
 //CATEGORIAS
 $categorias = array(
@@ -50,7 +52,7 @@ $CAT_CH = array(
     'Outros'
 );
 
-////Empresas Crachá
+//Empresas Crachá
 $empresas_cr = array(
     'Rio Service' => '1',
     'Forte Service' => '2',
@@ -60,8 +62,44 @@ $empresas_cr = array(
     'Vila Sul' => '6',
     'Forte Sul' => '7'
 );
-
 define('EMP_CR',$empresas_cr);
+
+//VETORES EMPRESAS PONTO
+$emp_1 = array(
+    'RIO SERVICE LTDA',
+    'ENDEREÇO X, 001 SALA Y;',
+    '78.895.869/0001-99'
+);
+$emp_2 = array(
+    'FORTE SERVICE LTDA',
+    'ENDEREÇO X, 002 SALA Y;',
+    '78.895.869/0001-99'
+);
+$emp_3 = array(
+    'FRS LTDA',
+    'ENDEREÇO X, 003 SALA Y;',
+    '78.895.869/0001-99'
+);
+$emp_4 = array(
+    'RIO FIRE LTDA',
+    'ENDEREÇO X, 004 SALA Y;',
+    '78.895.869/0001-99'
+);
+$emp_5 = array(
+    'VILA RIO LTDA',
+    'ENDEREÇO X, 005 SALA Y;',
+    '78.895.869/0001-99'
+);
+$emp_6 = array(
+    'VILA SUL LTDA',
+    'ENDEREÇO X, 006 SALA Y;',
+    '78.895.869/0001-99'
+);
+$emp_7 = array(
+    'FORTE SUL LTDA',
+    'ENDEREÇO X, 007 SALA Y;',
+    '78.895.869/0001-99'
+);
 
 //-----------------------------------------------------------------------
 $getUrl = strip_tags(trim(filter_input(INPUT_GET, 'url', FILTER_DEFAULT)));

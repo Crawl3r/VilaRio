@@ -17,10 +17,37 @@
     <div style="font-size: 14pt" class="panel-heading">Edição do Administrador</div>
     <div class="panel-body">
 
-        <form class="form-inline" role="form" action="php/edita_adm.php" method="post">
+        <form class="form-inline" role="form" action="php/edita_usuario.php" method="post">
             <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" />
+            <label>Nome: </label>
+            <input class="form-control" value="<?php echo $adm[0]['nome_usuario'] ?>" type="text" name="nome" />
+            <br />
             <label>Login: </label>
             <input class="form-control" value="<?php echo $adm[0]['login_usuario'] ?>" type="text" name="login" />
+            <br />
+            <label>Empresa: </label>
+            <select class="form-control" type="text" name="empresa">
+                <option></option>
+                <?php
+                foreach ($empresas_cr as $index => $key) {
+                    echo "<option ";
+                    echo ($key===$adm[0]['empresa']) ? "selected" : "";
+                    echo " value=\"$key\">$index</option>";
+                }
+                ?>
+            </select>
+            <br />
+            <label>Cargo: </label>
+            <input value="<?php echo $adm[0]['cargo'] ?>" class="form-control" type="text" name="cargo" />
+            <br />
+            <label>N° de Registro: </label>
+            <input value="<?php echo $adm[0]['n_registro'] ?>" class="form-control" type="text" name="n_registro" />
+            <br />
+            <label>CTPS: </label>
+            <input value="<?php echo $adm[0]['ctps'] ?>" class="form-control" type="text" name="ctps" />
+            <br />
+            <label>Admissão: </label>
+            <input value="<?php echo $adm[0]['admissao'] ?>" class="form-control" type="date" name="admissao" />
             <br /><br />
             <input class="btn btn-default" type="submit" value="Salvar Alterações" />			
         </form>

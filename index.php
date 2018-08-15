@@ -53,6 +53,14 @@ if($_POST){
             .input-small{
                 max-width: 120px;
             }
+            @media print {
+                .footer-1{
+                    display: none;
+                }
+                .esconde{
+                    display: none;
+                }
+            }
         </style>
 
     </head>
