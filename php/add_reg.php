@@ -1,12 +1,19 @@
 <?php
 	
 	include "../_app/Config.inc.php";
+    
+    date_default_timezone_set('America/Sao_Paulo');
 	
 	$info = $_POST;
     $info['reg'] = $info['dia'] . " " . $info['reg'];
+    
+    if($info['tipo']=="1" || $info['tipo']=="4"){
+        $info['reg'] = $info['dia'] . " " . date('H:i:s');
+    }
+    
     unset($info['dia']);
     
-    //print_r($info);
+    print_r($info);
     
     $cond1 = "WHERE id_usuario = '".$info['id_usuario']."' ";
     $cond2 = "reg LIKE '%".explode(" ",$info['reg'])[0]."%' ";

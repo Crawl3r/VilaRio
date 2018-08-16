@@ -99,6 +99,9 @@
                                 <li>
                                     <a href="<?= HOME; ?>/lista_reg_geral">Controle de Pontos</a>
                                 </li>
+                                <li>
+                                    <a href="<?= HOME; ?>/lista_listas">Folhas Geradas</a>
+                                </li>
                                 <?php } ?>
                             </ul>
                         </li>

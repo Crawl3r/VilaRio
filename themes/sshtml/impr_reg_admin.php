@@ -100,7 +100,14 @@ if($_SESSION != array()){
            CNPJ: <?= $empr[2] ?>
         </td>
         <td class="text-right">
-            Emissão: <?= date('H:i d/m/Y') ?>
+            Emissão: 
+            <?php 
+            if(isset($_GET['data_emis']) && $_GET['data_emis']!=""){ 
+                echo $_GET['data_emis']; 
+            }else{
+                echo $data = date('H:i d/m/Y');
+            }
+            ?>
         </td>
     </tr>
     <tr>
@@ -263,3 +270,26 @@ if($_SESSION != array()){
         </tbody>
     </table>
 </div>
+
+<?php
+
+if(isset($_GET['impr']) && $_GET['impr']=="0"){
+    
+}else{
+    $link_atual = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $data = "\r\n" . $data . "---" . $link_atual;
+
+    $my_file = './log/folhas.txt';
+    $handle = fopen($my_file, 'a') or die('Cannot open file:  '.$my_file);
+    fwrite($handle, $data);
+    fclose($handle);
+}
+
+?>
+
+<script>
+    $( document ).ready(function() {
+        //window.print();
+        //window.close();
+    });
+</script>

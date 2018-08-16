@@ -37,19 +37,6 @@ if(isset($_GET['valor']) && $_GET['valor']!=""){
 //condição 1
 $cond1 = "WHERE id_usuario = '$id_u' ";
 	
-//recolhe marcações do banco de dados
-/*
-if(isset($_GET['valor']) && $_GET['valor']!=""){
-
-    $valor = $_GET['valor'];
-		
-	$cond = "WHERE id_usuario = '$id_u' AND reg LIKE '%$valor%' ";
-	
-}else{
-	$cond = "WHERE id_usuario = '$id_u' ";
-}
-*/
-	
 //protege de entrada sem login
 if($_SESSION != array()){
     
@@ -157,7 +144,6 @@ if($_SESSION != array()){
                                                             . "<img style='width: 20px;' src='".SAVE_BTN."' />"
                                                             . "</button>";
                                                         }else{
-                                                            ?><?php
                                                             echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="É necessário que o horário de entrada seja registrado.">'
                                                             . "<button disabled type='submit' class='btn btn-xs btn-danger'>"
                                                             . "<img style='width: 20px;' src='".SAVE_BTN."' />"

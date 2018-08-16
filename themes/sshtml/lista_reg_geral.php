@@ -77,9 +77,10 @@ if($_SESSION != array()){
 
 <div class="panel panel-default">
     <div style="font-size: 14pt" class="panel-heading">
-		Folhas de Pontos
+        &nbsp;
+		<!-- Folhas de Pontos -->
         <?php if(isset($_GET['valor']) && $_GET['valor']!="" && isset($_GET['user']) && $_GET['user']!=""){ ?>
-            <a target="blank" class="btn btn-success" href="<?= HOME ?>/impr_reg_admin?user=<?=$_GET['user']?>&valor=<?=$_GET['valor']?>">Imprimir</a>
+            <a target="blank" class="btn btn-success" href="<?= HOME ?>/impr_reg_admin?user=<?=$_GET['user']?>&valor=<?=$_GET['valor']?>">Gerar Folha</a>
         <?php } ?>
 		<form style="display: inline-block; float: right;" class="form form-inline" method="GET" action="<?= HOME ?>/lista_reg_geral">
             <select required class="form-control" name="user">
@@ -145,9 +146,8 @@ if($_SESSION != array()){
                                         }
                                     ?>
                                     <form method="POST" class="form form-inline" onsubmit="return false;">
-                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto==array() ? date('H:i:s') : $registrado; ?>" 
-                                               <?= ($ponto==array() || ($i==2 || $i==3)) ? "" : "readonly" ; ?> 
-                                               <?= ($i==1 || $i==4) ? "readonly" : "" ; ?>/>
+                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto==array() ? /*date('H:i:s')*/"" : $registrado; ?>" 
+                                               readonly />
                                         <?php
                                             if($ponto==array()){
                                                 echo "<button disabled class='btn btn-xs btn-warning'>"

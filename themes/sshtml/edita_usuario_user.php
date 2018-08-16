@@ -22,7 +22,7 @@ $usuario = $crud->pdo_src('usuario','WHERE id_usuario = ' . $_GET['id']);
             <input class="form-control" value="<?php echo $usuario[0]['login_usuario'] ?>" type="text" name="login" />
             <br /><br />
             <label>Empresa: </label>
-            <select class="form-control" type="text" name="empresa_">
+            <select class="form-control" type="text" name="empresa">
                 <option></option>
                 <?php
                 foreach ($empresas_cr as $index => $key) {
