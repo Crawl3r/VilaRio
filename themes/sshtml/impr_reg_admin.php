@@ -7,7 +7,7 @@ $id_u = $_SESSION['id_usuario'];
 $usuario = $crud->query("SELECT * FROM tb_usuario WHERE id_usuario = ".$_GET['user'])[0];
 
 //empresa
-$empr = ${"emp_".$usuario['empresa']};
+@$empr = ${"emp_".$usuario['empresa']};
 
 //recolhe as datas 
 date_default_timezone_set('America/Sao_Paulo');
@@ -83,7 +83,7 @@ if($_SESSION != array()){
 <table class="cabecalho">
     <tr>
         <td>
-            <b><?= $empr[0] ?></b>
+            <b><?= @$empr[0] ?></b>
         </td>
         <td>
             
@@ -94,10 +94,10 @@ if($_SESSION != array()){
     </tr>
     <tr>
         <td>
-            <?= $empr[1] ?>
+            <?= @$empr[1] ?>
         </td>
         <td>
-           CNPJ: <?= $empr[2] ?>
+           CNPJ: <?= @$empr[2] ?>
         </td>
         <td class="text-right">
             Emissão: 
