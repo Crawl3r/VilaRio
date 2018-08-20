@@ -66,39 +66,39 @@ define('EMP_CR',$empresas_cr);
 
 //VETORES EMPRESAS PONTO
 $emp_1 = array(
-    'RIO SERVICE LTDA',
-    'ENDEREÇO X, 001 SALA Y;',
-    '78.895.869/0001-99'
+    'RIO SERVICE SERVICOS E LOCACAO DE BENS MOVEIS LTDA',
+    'Av Avenida Das Americas, 15531, Sala 105;',
+    '11.595.417/0001-60'
 );
 $emp_2 = array(
-    'FORTE SERVICE LTDA',
-    'ENDEREÇO X, 002 SALA Y;',
-    '78.895.869/0001-99'
+    'FORTE SERVICE SERVICOS E LOCACAO DE BENS MOVEIS LTDA',
+    'Est Dos Bandeirantes, 5196, Sala 205;',
+    '10.868.711/0001-36'
 );
 $emp_3 = array(
-    'FRS LTDA',
-    'ENDEREÇO X, 003 SALA Y;',
-    '78.895.869/0001-99'
+    'FRS RIO SERVICOS E LOCACAO DE BENS MOVEIS EIRELI',
+    'Est Dos Bandeirantes, 4885, Sala 306;',
+    '22.849.225/0001-50'
 );
 $emp_4 = array(
-    'RIO FIRE LTDA',
-    'ENDEREÇO X, 004 SALA Y;',
-    '78.895.869/0001-99'
+    'RIO FIRE SERVICOS ESPECIAIS CONTRA INCENDIO LTDA ',
+    'Est Dos Bandeirantes, 5196, Sala 202;',
+    '19.071.845/0001-04'
 );
 $emp_5 = array(
-    'VILA RIO LTDA',
-    'ENDEREÇO X, 005 SALA Y;',
-    '78.895.869/0001-99'
+    'VILA RIO VIGILANCIA E SEGURANCA LTDA',
+    'Est Dos Bandeirantes, 4835, Lote 1 - Pal 34288;',
+    '14.223.301/0001-99'
 );
 $emp_6 = array(
-    'VILA SUL LTDA',
-    'ENDEREÇO X, 006 SALA Y;',
-    '78.895.869/0001-99'
+    'VILA SUL - ESCOLA DE FORMACAO DE VIGILANTES LTDA',
+    'R Coronel Bernardino De Melo, 2673 GALPAO LOTE 10 QUADRA A;',
+    '04.963.936/0001-79'
 );
 $emp_7 = array(
-    'FORTE SUL LTDA',
-    'ENDEREÇO X, 007 SALA Y;',
-    '78.895.869/0001-99'
+    'FORTE SUL RIO SERVICOS E LOCACAO DE BENS MOVEIS LTDA',
+    'Av Nossa Senhora Das Gracas, 348, Apt 102;',
+    '10.556.185/0001-79'
 );
 
 //-----------------------------------------------------------------------
