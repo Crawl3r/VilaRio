@@ -71,7 +71,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                     <input type="hidden" name="id_lanc" value="<?= $_GET['id_l'] ?>" />
                     <input type="hidden" name="id_func_l" value="<?= $_SESSION['id_usuario'] ?>" />
 
-                    <div class="col-md-9">
+                    <div class="col-md-6">
 
                         <label>Contrato: </label>
                         <select required class="form-control" name="id_contrato" />
@@ -83,6 +83,22 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                             <?php } ?>
                         </select>
                             
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label>Empresa: </label>
+                        <select class="form-control" type="text" name="empresa">
+                            <option></option>
+                            <?php
+                            foreach ($empresas_cr as $index => $key) {
+                                if($chamado['id_contrato']==$key){
+                                    echo "<option selected value=\"$key\">$index</option>";
+                                }else{
+                                    echo "<option value=\"$key\">$index</option>";
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <div class="col-md-3">
@@ -164,23 +180,25 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
 
                 </div>
                 
-                <div class="row">
-                    
-                     <div class="col-md-9">
+                <?php for($i=1;$i<=3;$i++){ @$tot_extra += $chamado['val_extra_'.$i]; ?>
+                    <div class="row">
 
-                        <label>Descrição dos Extras (Caso Houverem): </label>
-                        <input class="form-control" type="text" name="descr_extra" value="<?= $chamado['descr_extra'] ?>" />
+                         <div class="col-md-9">
+
+                            <label>Outros <?=$i?>: </label>
+                            <input class="form-control" type="text" name="descr_extra_<?=$i?>" value="<?= $chamado['descr_extra_'.$i] ?>" />
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <label>Valor: </label>
+                            <input class="form-control" type="number" step=".01" name="val_extra_<?=$i?>" value="<?= $chamado['val_extra_'.$i] ?>" />
+
+                        </div>
 
                     </div>
-                    
-                    <div class="col-md-3">
-
-                        <label>Valor: </label>
-                        <input class="form-control" type="number" step=".01" name="val_extra" value="<?= $chamado['val_extra'] ?>" />
-
-                    </div>
-                    
-                </div>
+                <?php } ?>                
 
                 <div class="row">
 
@@ -206,12 +224,16 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                                 <td><?= "R$" . number_format($r1 = $tot * $chamado['valor_h'], 2, ",", "") ?></td>
                             </tr>
                             
-                             <tr class="success">
+                             <tr class="<?= $tot_extra>=0 ? "success" : "warning" ?>">
                                 <td>Extras</td>
                                 <td>--</td>
                                 <td>--</td>
                                 <td>--</td>
-                                <td><?= "R$" . number_format($re = $chamado['val_extra'], 2, ",", "") ?></td>
+                                <?php 
+                                $re = $tot_extra;
+                                $tot_extra < 0 ? $tot_extra="(R$".number_format($tot_extra*=(-1),2,",",".").")" : "" ; 
+                                ?>
+                                <td><?= $tot_extra ?></td>
                             </tr>
 
                             <tr class="warning">

@@ -20,9 +20,7 @@
     <div style="font-size: 14pt" class="panel-heading">Faturas</div>
     <div class="panel-body">
 
-        <a href="cad_chamado" class="btn btn-default">Novo Chamado</a>
-
-        <br /><br />
+        <br />
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead>
