@@ -31,6 +31,14 @@ switch ($mes){
 
 }
 
+//extras
+for($i=1;$i<=3;$i++){ 
+    @$tot_extra += $chamado['val_extra_'.$i];                   
+}
+
+//empresa
+@$empr = ${"emp_".$chamado['empresa']};
+
 ?>
 <script>
     $(document).ready(function () {
@@ -66,6 +74,8 @@ switch ($mes){
     .impr tr td  {
         padding: 2px !important;
     }
+    
+    
 
     @media print { 
         
@@ -85,14 +95,18 @@ switch ($mes){
             height: auto;
         }
     }
-
+    
+    table{
+        font-size: 12pt;
+    }
+    
 </style>
 
 <div class="container">
     
     <center>
         <div>
-            <h4>VILA RIO VIGILÂNCIA E SEGURANÇA LTDA</h4>
+            <h4><?= $empr[0] ?></h4>
             <h4>RELATÓRIO DE CARGA HORÁRIA</h4>
             <h4>MÊS: <?= $extenso . "/" . explode("/",$chamado['mes_ano'])[1] ?></h4>
         </div>
@@ -119,9 +133,6 @@ switch ($mes){
                 <td colspan="4"><?= $chamado['efetivo'] ?></td>
             </tr>
 
-            <tr>
-                <td colspan="5"></td>
-            </tr>
 
             <tr>
                 <td class="text-center" style="width: 100px;"><b>Dia/Mês</b></td>
@@ -132,9 +143,9 @@ switch ($mes){
             <?php $tot = 0;
             for ($i = 1; $i < 32; $i++) { ?>
                 <tr class="dias" style="font-size: 0.85em;">
-                    <td class="text-center" style="padding: 1px !important"><?= $i."/".$mes ?></td>
-                    <td class="text-center" style="padding: 1px !important"><?= $chamado['dia_' . $i] ?></td>
-                    <td class="text-center" style="padding: 1px !important"><?= $chamado['tipo_cobr'] ?></td>
+                    <td class="text-center" style="padding: 0px !important;"><?= $i."/".$mes ?></td>
+                    <td class="text-center" style="padding: 0px !important;"><?= $chamado['dia_' . $i] ?></td>
+                    <td class="text-center" style="padding: 0px !important;"><?= $chamado['tipo_cobr'] ?></td>
                     <?php if ($i == 1) { ?>
                         <td colspan="2" rowspan="31" style="padding: 10px !important">
                             Valor do(a)(s) <?= $chamado['tipo_cobr'] ?>: <b>R$<?= number_format($chamado['valor_h'], 2, ",", "") ?></b> <br /><br />
@@ -145,11 +156,22 @@ switch ($mes){
                             2 - PIS pago pela contratante (xerox) <br />
                             3 - COFINS pago pela contratante (xerox) <br />
                             4 - CSSL pago pela contratante (xerox) <br /><br />
-                            <b>Extras:</b> <br /><br />
-                            Valor de <b><?= "R$" . number_format($re = $chamado['val_extra'], 2, ",", "") ?></b> 
-                            referente ao(s) seguinte(s) ponto(s): <br /><br />
-                            <ul><li><?= ucfirst($chamado['descr_extra']) ?></li></ul> <br /><br />
+                            
                             <b>Outros:</b> <br /><br />
+                            <?php if($tot_extra==0 || $tot_extra==0.00){ ?>
+                                <br /><br />
+                            <?php } else { ?>
+                                Valor de <b><?= "R$" . number_format($tot_extra, 2, ",", "") ?></b> 
+                                referente ao(s) seguinte(s) ponto(s): <br /><br />
+                                <?php for($j=1;$j<=3;$j++) { ?>
+                                    <?php if($chamado['descr_extra_'.$j]!="" || $chamado['val_extra_'.$j]!=0){ ?>
+                                        <ul><li><?= ucfirst($chamado['descr_extra_'.$j]) . " - R$" . $chamado['val_extra_'.$j] ?></li></ul>
+                                    <?php } ?>
+                                <?php } ?>
+                                <br />
+                            <?php } ?>
+                            
+                            <b>Observações:</b> <br /><br />
                             <?= $chamado['obs_retencoes'] ?>
                         </td>
                 <?php } ?>
@@ -175,15 +197,19 @@ switch ($mes){
                 <td class="text-center">R$<?= number_format($chamado['valor_h'], 2, ",", "") ?></td>
                 <td class="text-center"><?= "R$" . number_format($r1 = $tot * $chamado['valor_h'], 2, ",", "") ?></td>
             </tr>
-             <tr style="font-size: 0.85em;" class="success">
+             <tr style="font-size: 0.85em;" class="<?= $tot_extra>=0 ? "success" : "warning" ?>">
                 <td>Extras</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
-                <td class="text-center"><?= "R$" . number_format($re = $chamado['val_extra'], 2, ",", "") ?></td>
+                <?php 
+                $re = $tot_extra;
+                $tot_extra < 0 ? $tot_extra="(R$".number_format($tot_extra*=(-1),2,",",".").")" : $tot_extra="R$".number_format($tot_extra,2,",",".")  ; 
+                ?>
+                <td class="text-center"><?= $tot_extra ?></td>
             </tr>
             <tr style="font-size: 0.85em;" class="warning">
-                <td>Desc. em <?= ucfirst($chamado['tipo_cobr']) ?></td>
+                <td style="white-space: nowrap;">Desc. em <?= ucfirst($chamado['tipo_cobr']) ?></td>
                 <td class="text-center"><?= $chamado['desco'] ?></td>
                 <td class="text-center">X</td>
                 <td class="text-center">R$<?= number_format($chamado['valor_h'], 2, ",", "") ?></td>
@@ -230,10 +256,6 @@ switch ($mes){
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
                 <td class="text-center"><b><?= "R$" . number_format($r3 - ($s1 + $s2 + $s3 + $s4), 2, ",", "") ?></b></td>
-            </tr>
-            
-            <tr>
-                <td colspan="5"></td>
             </tr>
 
             <tr style="font-size: 0.9em;">

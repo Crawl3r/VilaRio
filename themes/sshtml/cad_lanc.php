@@ -50,7 +50,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
                     <input type="hidden" name="id_func_l" value="<?= $_SESSION['id_usuario'] ?>" />
                     
-                    <div class="col-md-9">
+                    <div class="col-md-6">
 
                         <label>Contrato: </label>
                         <select required class="form-control" name="id_contrato" />
@@ -62,6 +62,18 @@ date_default_timezone_set('America/Sao_Paulo');
                             <?php } ?>
                         </select>
                             
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label>Empresa: </label>
+                        <select class="form-control" type="text" name="empresa">
+                            <option></option>
+                            <?php
+                            foreach ($empresas_cr as $index => $key) {
+                                echo "<option value=\"$key\">$index</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <div class="col-md-3">
@@ -141,23 +153,25 @@ date_default_timezone_set('America/Sao_Paulo');
                     
                 </div>
                 
-                <div class="row">
-                    
-                     <div class="col-md-9">
+                <?php for($i=1;$i<=3;$i++){ ?>
+                    <div class="row">
 
-                        <label>Descrição dos Extras (Caso Houverem): </label>
-                        <input class="form-control" type="text" name="descr_extra" />
+                         <div class="col-md-9">
+
+                            <label>Outros <?=$i?>: </label>
+                            <input class="form-control" type="text" name="descr_extra_<?=$i?>" />
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <label>Valor: </label>
+                            <input class="form-control" type="number" step=".01" name="val_extra_<?=$i?>" />
+
+                        </div>
 
                     </div>
-                    
-                    <div class="col-md-3">
-
-                        <label>Valor: </label>
-                        <input class="form-control" type="number" step=".01" name="val_extra" />
-
-                    </div>
-                    
-                </div>
+                <?php } ?>
 
                 <div class="row">                    
                     <div class="col-md-12">
