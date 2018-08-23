@@ -39,9 +39,11 @@
 
                     <?php if ($_SESSION['nivel_usuario'] != "adm") { ?>
 						
-						 <li>
+                    <!--
+                        <li>
                             <a href="<?= HOME; ?>/lista_ger">Gerência</a>
                         </li>
+                    -->
                         <li><a href="edita_usuario_user?id=<?php echo $_SESSION['id_usuario'] ?>">Usuário</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Funcionários
