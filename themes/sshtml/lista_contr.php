@@ -29,7 +29,7 @@
                     <input class="form-control" type="text" name="local" />
                 </div>
                 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label>Endereço</label>
                     <input class="form-control" type="text" name="endereco" />
                 </div>
@@ -39,9 +39,9 @@
                     <input class="form-control" type="text" name="cnpj" />
                 </div>
                 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <br />
-                    <button type="submit" class="btn btn-success btn-block">Gravar</button>
+                    <button type="submit" style="margin-top: 4px;" class="btn btn-success btn-block">Gravar</button>
                 </div>
 
             </form>

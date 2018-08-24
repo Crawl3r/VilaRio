@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Ago-2018 às 15:34
+-- Generation Time: 14-Ago-2018 às 14:38
 -- Versão do servidor: 10.1.33-MariaDB
 -- PHP Version: 7.0.15
 
@@ -126,7 +126,6 @@ CREATE TABLE `tb_lanc` (
   `id_lanc` int(11) NOT NULL,
   `id_func_l` int(11) NOT NULL,
   `id_contrato` int(11) NOT NULL,
-  `empresa` int(11) NOT NULL,
   `efetivo` varchar(40) NOT NULL,
   `mes_ano` varchar(10) NOT NULL,
   `tipo_cobr` varchar(40) NOT NULL,
@@ -136,12 +135,8 @@ CREATE TABLE `tb_lanc` (
   `nf` varchar(50) NOT NULL,
   `d_emis` date NOT NULL,
   `d_venc` date NOT NULL,
-  `descr_extra_1` text NOT NULL,
-  `val_extra_1` decimal(15,2) NOT NULL,
-  `descr_extra_2` text NOT NULL,
-  `val_extra_2` decimal(15,2) NOT NULL,
-  `descr_extra_3` text NOT NULL,
-  `val_extra_3` decimal(15,2) NOT NULL,
+  `descr_extra` text NOT NULL,
+  `val_extra` decimal(15,2) NOT NULL,
   `dia_1` int(11) NOT NULL,
   `dia_2` int(11) NOT NULL,
   `dia_3` int(11) NOT NULL,
@@ -214,25 +209,15 @@ CREATE TABLE `tb_usuario` (
   `nivel_usuario` varchar(20) NOT NULL,
   `setor_usuario` varchar(60) NOT NULL,
   `ativo_usuario` tinyint(1) NOT NULL,
-  `empresa` int(11) NOT NULL,
-  `cargo` varchar(200) NOT NULL,
-  `n_registro` varchar(100) NOT NULL,
-  `ctps` varchar(100) NOT NULL,
-  `admissao` date NOT NULL
+  `empresa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tb_usuario`
 --
 
-INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `login_usuario`, `senha_usuario`, `nivel_usuario`, `setor_usuario`, `ativo_usuario`, `empresa`, `cargo`, `n_registro`, `ctps`, `admissao`) VALUES
-(1, 'Administrador', 'admin', 'admin', 'adm', 'adm', 1, 0, '', '', '', '0000-00-00'),
-(6, 'Fabiane', 'Fabiane', '123', 'usuario', 'Simples', 1, 5, 'desk', '7878', '8787878', '2018-08-08'),
-(7, 'Tatiane', 'Tatiane', '123', 'usuario', 'Simples', 1, 0, '', '', '', '0000-00-00'),
-(8, 'Elis', 'Elis', '123', 'usuario', 'Simples', 1, 0, '', '', '', '0000-00-00'),
-(11, 'Priscila', 'priscila', '123', 'usuario', 'Simples', 1, 0, '', '', '', '0000-00-00'),
-(12, 'Valter', 'valter', '123', 'usuario', 'Simples', 1, 0, '', '', '', '0000-00-00'),
-(13, 'Gisele', 'gisele', '123456', 'adm', '', 1, 6, 'chefe de departamento', '4564', '123121-rj', '2004-09-09');
+INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `login_usuario`, `senha_usuario`, `nivel_usuario`, `setor_usuario`, `ativo_usuario`, `empresa`) VALUES
+(1, 'Administrador', 'admin', 'admin', 'adm', 'adm', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -326,7 +311,7 @@ ALTER TABLE `tb_funcionario`
 -- AUTO_INCREMENT for table `tb_lanc`
 --
 ALTER TABLE `tb_lanc`
-  MODIFY `id_lanc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_lanc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_midia_ch`
 --
@@ -336,12 +321,12 @@ ALTER TABLE `tb_midia_ch`
 -- AUTO_INCREMENT for table `tb_reg_ponto`
 --
 ALTER TABLE `tb_reg_ponto`
-  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tb_usuario`
 --
 ALTER TABLE `tb_usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Constraints for dumped tables
 --
