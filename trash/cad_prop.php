@@ -6,6 +6,7 @@ if (isset($_SESSION)) {
 }
 $cod = $crud->l_cod_prop($pdo);
 @$cod = sprintf("%03d", ($cod[0][0]+1));
+//ok
 ?>
 <!DOCTYPE HTML>
 <html>
