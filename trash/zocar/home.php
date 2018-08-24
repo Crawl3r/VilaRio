@@ -1,42 +1,42 @@
 <?php
 
-	session_start();
+    session_start();
 	
-	include "php/conection.php";
-	include "php/querys.php";
+    include "php/conection.php";
+    include "php/querys.php";
 	
-	//protege entrada sem login
-	if(@$_SESSION == array()){
-		echo "<script>window.location.href='index.php';</script>";
-	}
+    //protege entrada sem login
+    if(@$_SESSION == array()){
+        echo "<script>window.location.href='index.php';</script>";
+    }
 	
-	@$id = $_SESSION['id_usuario'];
-	@$id_adm = $_SESSION['id_adm'];
+    @$id = $_SESSION['id_usuario'];
+    @$id_adm = $_SESSION['id_adm'];
 	
-	//print_r($_SESSION);
+    //print_r($_SESSION);
 	
-	//seleciona as obras
-	$obra = obra($pdo);
+    //seleciona as obras
+    $obra = obra($pdo);
 	
-	//limpa a matriz
-	$ok = 1;
-	foreach($obra as $index=>$key){
-		foreach($key as $pont=>$row){
+    //limpa a matriz
+    $ok = 1;
+    foreach($obra as $index=>$key){
+        foreach($key as $pont=>$row){
 	
-			if($ok==1){
-				$obra_f[$index][$pont] = $row;
-				$ok = 0;
-			}else{
-				$ok = 1;
-			}
+            if($ok==1){
+                $obra_f[$index][$pont] = $row;
+                $ok = 0;
+            }else{
+                $ok = 1;
+            }
 		
-		}
-	}
+        }
+    }
 	
 	
-	//echo "<pre>";
-	//print_r($obra_f);
-	//echo "</pre>";
+    //echo "<pre>";
+    //print_r($obra_f);
+    //echo "</pre>";
 	
 ?>
 <!DOCTYPE HTML>
@@ -95,32 +95,32 @@
 		
 		<?php foreach($obra_f as $pont_1=>$row_1){ ?>
 			<?php
-				$id_obra = $row_1['id_obra'];
-				$nome_obra = $row_1['nome_obra'];
-				$end_obra = utf8_encode($row_1['logradouro_obra']).", ".$row_1['bairro_obra'].
-					" - ".$row_1['cidade_obra'].", ".$row_1['estado_obra'];
+                $id_obra = $row_1['id_obra'];
+                $nome_obra = $row_1['nome_obra'];
+                $end_obra = utf8_encode($row_1['logradouro_obra']).", ".$row_1['bairro_obra'].
+                    " - ".$row_1['cidade_obra'].", ".$row_1['estado_obra'];
 				
-				//seleciona os equipamentos pela obra
-				$equip = equipamento_obra($pdo,$row_1['id_obra']);
-				$equip_f = array();
+                //seleciona os equipamentos pela obra
+                $equip = equipamento_obra($pdo,$row_1['id_obra']);
+                $equip_f = array();
 				
-				//limpa a matriz
-				$ok = 1;
-				foreach($equip as $index=>$key){
-					foreach($key as $pont=>$row){
+                //limpa a matriz
+                $ok = 1;
+                foreach($equip as $index=>$key){
+                    foreach($key as $pont=>$row){
 				
-						if($ok==1){
-							$equip_f[$index][$pont] = $row;
-							$ok = 0;
-						}else{
-							$ok = 1;
-						}
-					}
-				}
-				foreach($equip_f as $index=>$key){
-					unset($equip_f[$index]['id_equipamento']);
-				}
-			?>
+                        if($ok==1){
+                            $equip_f[$index][$pont] = $row;
+                            $ok = 0;
+                        }else{
+                            $ok = 1;
+                        }
+                    }
+                }
+                foreach($equip_f as $index=>$key){
+                    unset($equip_f[$index]['id_equipamento']);
+                }
+            ?>
 			<div class="panel panel-default">
 				<div style="font-size: 14pt" class="panel-heading">
 					<?php echo $nome_obra; ?>
@@ -200,21 +200,21 @@
 									
 									<?php 
 									
-										foreach($equip_f as $index=>$key){
-											echo "<tr style='background: #fff !important; border-bottom: 1px solid #ababab'>";
-											foreach($key as $pont=>$row){
-												if($pont=='valor_mes_equipamento'){
-													echo "<td>R$".utf8_encode(number_format($row,2,",",""))."</td>";
-												}else{
-													echo "<td>".utf8_encode($row)."</td>";
-												}
-											}
-											echo "</tr>";
-										} 
+                                        foreach($equip_f as $index=>$key){
+                                            echo "<tr style='background: #fff !important; border-bottom: 1px solid #ababab'>";
+                                            foreach($key as $pont=>$row){
+                                                if($pont=='valor_mes_equipamento'){
+                                                    echo "<td>R$".utf8_encode(number_format($row,2,",",""))."</td>";
+                                                }else{
+                                                    echo "<td>".utf8_encode($row)."</td>";
+                                                }
+                                            }
+                                            echo "</tr>";
+                                        } 
 										
-									?>
+                                    ?>
 										
-								<?php }else{ ?>
+								<?php }else { ?>
 									
 									<tr>
 										<td colspan=24>

@@ -4,12 +4,12 @@ if ($_SESSION != array()) {
     if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nivel_usuario'] == 'usuario') {
         
     }
-} else {
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 
 date_default_timezone_set('America/Sao_Paulo');
-$data_atual = date('Y-m-d')."T".date('H:i:s');
+$data_atual = date('Y-m-d') . "T" . date('H:i:s');
 
 $empresas = $crud->pdo_src('empresa', '');
 $funcionarios = $crud->pdo_src('usuario', '');

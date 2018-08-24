@@ -2,7 +2,7 @@
 //protege de entrada sem ser ADM
 if ($_SESSION != array()) {
 
-} else {
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 ?>

@@ -4,7 +4,7 @@ if ($_SESSION != array()) {
     if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nome_usuario'] == 'Gisele') {
         
     }
-} else {
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 
@@ -55,7 +55,7 @@ date_default_timezone_set('America/Sao_Paulo');
                         <label>Contrato: </label>
                         <select required class="form-control" name="id_contrato" />
                             <option></option>
-                            <?php foreach($contratos as $key){ ?>
+                            <?php foreach ($contratos as $key) { ?>
                                 <option value="<?= $key['id_contrato'] ?>">
                                     <?= $key['local'] . " - CNPJ:" . $key['cnpj'] ?>
                                 </option>
@@ -144,7 +144,7 @@ date_default_timezone_set('America/Sao_Paulo');
                 
                 <div class="row seven-cols">
                     
-                    <?php for($i=1; $i<32; $i++){ ?>
+                    <?php for ($i = 1; $i<32; $i++) { ?>
                         <div class="col-md-1">
                             <label>Dia <?= $i ?>: </label>
                             <input class="form-control" type="number" value="12" name="dia_<?= $i ?>" />
@@ -153,7 +153,7 @@ date_default_timezone_set('America/Sao_Paulo');
                     
                 </div>
                 
-                <?php for($i=1;$i<=3;$i++){ ?>
+                <?php for ($i = 1; $i<=3; $i++) { ?>
                     <div class="row">
 
                          <div class="col-md-9">

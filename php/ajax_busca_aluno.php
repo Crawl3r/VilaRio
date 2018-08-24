@@ -60,21 +60,21 @@ if ($valor !== "") {
             echo "</td>";
 
             echo "<td>";
-            echo implode('/',array_reverse(explode('-',$key['nasc_aluno'])));
+            echo implode('/', array_reverse(explode('-', $key['nasc_aluno'])));
             echo "</td>";
 
             echo "<td>";
             $matricula = false;
             $e_matricula = "";
-            foreach($matriculas as $index2=>$key2){
-                if(new DateTime() < new DateTime($key2['data_val_matricula']." 16:00:00")){
+            foreach ($matriculas as $index2=>$key2) {
+                if (new DateTime()<new DateTime($key2['data_val_matricula'] . " 16:00:00")) {
                     $matricula = true;
-                    $e_matricula .= $key2['codigo_turma']." / ";
+                    $e_matricula .= $key2['codigo_turma'] . " / ";
                 }
             }
-            if($matricula){
+            if ($matricula) {
                 echo substr_replace($e_matricula, '', -3);
-            }else{
+            }else {
                 echo "Sem Turma no momento";
             }
             echo "</td>";

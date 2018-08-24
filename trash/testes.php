@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class teste{
+class teste {
     
     private $cor;
     public static $corS = 'Vermelho Estático.';
@@ -27,7 +27,7 @@ class teste{
         $this->cor = $cor;
     }
     
-    public function valS(){
+    public function valS() {
         return self::$corS;
     }
     

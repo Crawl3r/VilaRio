@@ -3,12 +3,12 @@
 <?php
 
 //protege de entrada sem login
-	if($_SESSION == array()){
-		if(@$_SESSION['nivel_usuario']!='adm'){
-			require REQUIRE_PATH . "/inc/frame_home.php";
-		}
-	}else{
-		require REQUIRE_PATH . "/inc/lista_index.php";
+    if($_SESSION == array()){
+        if(@$_SESSION['nivel_usuario']!='adm'){
+            require REQUIRE_PATH . "/inc/frame_home.php";
+        }
+    }else{
+        require REQUIRE_PATH . "/inc/lista_index.php";
 
 $chamados = $crud->pdo_src_c('ORDER BY status_chamado ASC, d_h_a_chamado ASC');
 
@@ -64,7 +64,7 @@ echo "
     </div>
 ";
 		
-	}
+    }
 
 
 

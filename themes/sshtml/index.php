@@ -7,16 +7,16 @@ if ($_SESSION == array()) {
     if (@$_SESSION['nivel_usuario'] != 'adm') {
         require REQUIRE_PATH . "/inc/frame_home.php";
     }
-} else {
+}else {
 
     require REQUIRE_PATH . "/inc/Lista-class.php";
 
     $lista = new lista_index();
     
-    if($_GET !== array()){
-        $cat_u = $lista->desenha_aberta($_GET['campo'],$_GET['valor']);
-    }else{
-        $cat_u = $lista->desenha_aberta('','');
+    if ($_GET !== array()) {
+        $cat_u = $lista->desenha_aberta($_GET['campo'], $_GET['valor']);
+    }else {
+        $cat_u = $lista->desenha_aberta('', '');
     }
     
     

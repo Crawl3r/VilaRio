@@ -43,7 +43,7 @@
                             </ul>
                         </li>
 
-                    <?php } else { ?>
+                    <?php }else { ?>
 
 
                         <li>
@@ -76,7 +76,7 @@
                         <a href="php/logoff.php"> <img src="<?= INCLUDE_PATH; ?>/img/glyph-log-out.png" style="width: 20px;" /> Sair </a>
                     </li>
 
-                <?php } else { ?>
+                <?php }else { ?>
 
                     <li>
                         <a href="<?= HOME; ?>/login"> <img src="<?= INCLUDE_PATH; ?>/img/glyph-log-in.png" style="width: 20px;" /> Entrar </a>

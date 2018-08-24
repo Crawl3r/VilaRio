@@ -1,11 +1,11 @@
 <?php 
 require './_app/Config.inc.php';
 //protege de entrada sem login
-if(isset($_SESSION)){
+if (isset($_SESSION)) {
     echo ($_SESSION === [] ? "<script>window.location.href='index.php';</script>" : "");
 }
 $cod = $crud->l_cod_prop($pdo);
-@$cod = sprintf("%03d",($cod[0][0]+1));
+@$cod = sprintf("%03d", ($cod[0][0]+1));
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -37,8 +37,8 @@ $cod = $crud->l_cod_prop($pdo);
 	</head>
 	<body>
 		<?php
-		require "./themes/wshtml/inc/menu.php";
-		?>
+        require "./themes/wshtml/inc/menu.php";
+        ?>
 		
         <?php
         require "./themes/wshtml/inc/footer.php";

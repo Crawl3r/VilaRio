@@ -1,7 +1,7 @@
 <?php
 require './_app/Config.inc.php';
 //protege de entrada sem login
-if(isset($_SESSION)){
+if (isset($_SESSION)) {
     echo ($_SESSION === [] ? "<script>window.location.href='index.php';</script>" : "");
 }
 $prop = $crud->prop($pdo);

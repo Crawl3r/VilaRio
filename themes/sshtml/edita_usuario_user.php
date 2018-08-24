@@ -6,7 +6,7 @@ if ($_SESSION != array()) {
     }
 }
 
-$usuario = $crud->pdo_src('usuario','WHERE id_usuario = ' . $_GET['id']);
+$usuario = $crud->pdo_src('usuario', 'WHERE id_usuario = ' . $_GET['id']);
 ?>
 <div class="panel panel-default">
     <div style="font-size: 14pt" class="panel-heading">Edição de Usuário</div>
@@ -27,7 +27,7 @@ $usuario = $crud->pdo_src('usuario','WHERE id_usuario = ' . $_GET['id']);
                 <?php
                 foreach ($empresas_cr as $index => $key) {
                     echo "<option ";
-                    echo ($key===$usuario[0]['empresa']) ? "selected" : "";
+                    echo ($key === $usuario[0]['empresa']) ? "selected" : "";
                     echo " value=\"$key\">$index</option>";
                 }
                 ?>
@@ -36,8 +36,8 @@ $usuario = $crud->pdo_src('usuario','WHERE id_usuario = ' . $_GET['id']);
             <label>Setor: </label>
             <select required class="form-control" name="setor">
                 <option></option>
-                <option <?= $usuario[0]['setor_usuario']=='Simples' ? 'selected' : '' ?> >Simples</option>
-                <option <?= $usuario[0]['setor_usuario']=='Operacional' ? 'selected' : '' ?> >Operacional</option>
+                <option <?= $usuario[0]['setor_usuario'] == 'Simples' ? 'selected' : '' ?> >Simples</option>
+                <option <?= $usuario[0]['setor_usuario'] == 'Operacional' ? 'selected' : '' ?> >Operacional</option>
             </select>
             <br />
             <label>Cargo: </label>

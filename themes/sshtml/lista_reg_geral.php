@@ -8,12 +8,12 @@ $usuarios = $crud->query("SELECT * FROM tb_usuario");
 
 //recolhe as datas 
 date_default_timezone_set('America/Sao_Paulo');
-$mes = isset($_GET['valor']) ? explode('-',$_GET['valor'])[1] : date('m');
-$ano = isset($_GET['valor']) ? explode('-',$_GET['valor'])[0] : date('Y');
+$mes = isset($_GET['valor']) ? explode('-', $_GET['valor'])[1] : date('m');
+$ano = isset($_GET['valor']) ? explode('-', $_GET['valor'])[0] : date('Y');
 $hora_c = date('H:i:s');
 
 //datas para o loop
-if(isset($_GET['valor']) && $_GET['valor']!=""){
+if (isset($_GET['valor']) && $_GET['valor'] != "") {
     
     $begin = new DateTime($_GET['valor']);
     $begin = $begin->modify("first day of this month");
@@ -25,7 +25,7 @@ if(isset($_GET['valor']) && $_GET['valor']!=""){
     $interval = DateInterval::createFromDateString('1 day');
     $period = new DatePeriod($begin, $interval, $end);
     
-}else{
+}else {
     
     $begin = new DateTime("first day of this month");
     
@@ -40,22 +40,22 @@ if(isset($_GET['valor']) && $_GET['valor']!=""){
 	
 //recolhe marcações do banco de dados
 
-if(isset($_GET['valor']) && $_GET['valor']!="" && isset($_GET['user']) && $_GET['user']!=""){
+if (isset($_GET['valor']) && $_GET['valor'] != "" && isset($_GET['user']) && $_GET['user'] != "") {
 
     $valor = $_GET['valor'];
     $user = $_GET['user'];
 		
-	//condição 1
+    //condição 1
     $cond1 = "WHERE id_usuario = '$user' ";
 	
 }
 	
 //protege de entrada sem login
-if($_SESSION != array()){
+if ($_SESSION != array()) {
     if ($_SESSION['nome_usuario'] != "Gisele") {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
-}else{
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 	
@@ -79,18 +79,18 @@ if($_SESSION != array()){
     <div style="font-size: 14pt" class="panel-heading">
         &nbsp;
 		<!-- Folhas de Pontos -->
-        <?php if(isset($_GET['valor']) && $_GET['valor']!="" && isset($_GET['user']) && $_GET['user']!=""){ ?>
+        <?php if (isset($_GET['valor']) && $_GET['valor'] != "" && isset($_GET['user']) && $_GET['user'] != "") { ?>
             <a target="blank" class="btn btn-success" href="<?= HOME ?>/impr_reg_admin?user=<?=$_GET['user']?>&valor=<?=$_GET['valor']?>">Gerar Folha</a>
         <?php } ?>
 		<form style="display: inline-block; float: right;" class="form form-inline" method="GET" action="<?= HOME ?>/lista_reg_geral">
             <select required class="form-control" name="user">
                 <option></option>
                 <?php 
-                foreach($usuarios as $key){
-                    if($_GET['user']==$key['id_usuario']){
-                        echo "<option selected value=".$key['id_usuario'].">".$key['nome_usuario']."</option>";
-                    }else{
-                        echo "<option value=".$key['id_usuario'].">".$key['nome_usuario']."</option>";
+                foreach ($usuarios as $key) {
+                    if ($_GET['user'] == $key['id_usuario']) {
+                        echo "<option selected value=" . $key['id_usuario'] . ">" . $key['nome_usuario'] . "</option>";
+                    }else {
+                        echo "<option value=" . $key['id_usuario'] . ">" . $key['nome_usuario'] . "</option>";
                     }
                 }
                 ?>
@@ -125,37 +125,37 @@ if($_SESSION != array()){
                 </thead>
                 <tbody>
                     <?php 
-                    if(isset($cond1)){
+                    if (isset($cond1)) {
                         foreach ($period as $dt) { 
-                            $cond2 = "reg LIKE '%".$dt->format("Y-m-d")."%' ";
+                            $cond2 = "reg LIKE '%" . $dt->format("Y-m-d") . "%' ";
                     ?>
-                        <tr <?= date('Y-m-d')==$dt->format("Y-m-d") ? "class='success'" : "" ?> id="<?= $dt->format("d/m/Y"); ?>">
+                        <tr <?= date('Y-m-d') == $dt->format("Y-m-d") ? "class='success'" : "" ?> id="<?= $dt->format("d/m/Y"); ?>">
                             <td>
                                 <?= $dt->format("d/m/Y"); ?>
                             </td>
-                            <?php for($i=1;$i<=4;$i++){ ?>
+                            <?php for ($i = 1; $i<=4; $i++) { ?>
                                 <td>
                                     <?php 
                                         $cond3 = "tipo = $i";
                                         $ponto = $crud->query("SELECT reg FROM tb_reg_ponto $cond1 AND $cond2 AND $cond3 ");
-                                        if($ponto != array()){
-                                            $registrado = explode(" ",$ponto[0]['reg'])[1];
-                                            if($i==1){
+                                        if ($ponto != array()) {
+                                            $registrado = explode(" ", $ponto[0]['reg'])[1];
+                                            if ($i == 1) {
                                                 $entrada_yn = true;
                                             }
                                         }
                                     ?>
                                     <form method="POST" class="form form-inline" onsubmit="return false;">
-                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto==array() ? /*date('H:i:s')*/"" : $registrado; ?>" 
+                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto == array() ? /*date('H:i:s')*/"" : $registrado; ?>" 
                                                readonly />
                                         <?php
-                                            if($ponto==array()){
+                                            if ($ponto == array()) {
                                                 echo "<button disabled class='btn btn-xs btn-warning'>"
-                                                . "<img style='width: 20px;' src='".NO_BTN."' />"
+                                                . "<img style='width: 20px;' src='" . NO_BTN . "' />"
                                                 . "</button>";
-                                            }else{
+                                            }else {
                                                 echo "<button disabled class='btn btn-xs btn-success'>"
-                                                . "<img style='width: 20px;' src='".OK_BTN."' />"
+                                                . "<img style='width: 20px;' src='" . OK_BTN . "' />"
                                                 . "</button>";
                                             }
                                         ?>
@@ -165,7 +165,7 @@ if($_SESSION != array()){
                         <tr>
                     <?php 
                         } 
-                    }else{
+                    }else {
                     ?>
                         <tr>
                             <td class="text-center" colspan="5">

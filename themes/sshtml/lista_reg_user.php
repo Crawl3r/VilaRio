@@ -5,12 +5,12 @@ $id_u = $_SESSION['id_usuario'];
 
 //recolhe as datas 
 date_default_timezone_set('America/Sao_Paulo');
-$mes = isset($_GET['valor']) ? explode('-',$_GET['valor'])[1] : date('m');
-$ano = isset($_GET['valor']) ? explode('-',$_GET['valor'])[0] : date('Y');
+$mes = isset($_GET['valor']) ? explode('-', $_GET['valor'])[1] : date('m');
+$ano = isset($_GET['valor']) ? explode('-', $_GET['valor'])[0] : date('Y');
 $hora_c = date('H:i:s');
 
 //datas para o loop
-if(isset($_GET['valor']) && $_GET['valor']!=""){
+if (isset($_GET['valor']) && $_GET['valor'] != "") {
     
     $begin = new DateTime($_GET['valor']);
     $begin = $begin->modify("first day of this month");
@@ -22,7 +22,7 @@ if(isset($_GET['valor']) && $_GET['valor']!=""){
     $interval = DateInterval::createFromDateString('1 day');
     $period = new DatePeriod($begin, $interval, $end);
     
-}else{
+}else {
     
     $begin = new DateTime("first day of this month");
     
@@ -38,9 +38,9 @@ if(isset($_GET['valor']) && $_GET['valor']!=""){
 $cond1 = "WHERE id_usuario = '$id_u' ";
 	
 //protege de entrada sem login
-if($_SESSION != array()){
+if ($_SESSION != array()) {
     
-}else{
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 	
@@ -127,12 +127,12 @@ if($_SESSION != array()){
                                                     echo "<button type='submit' class='btn btn-xs btn-warning'>"
                                                     . "<img style='width: 20px;' src='".SAVE_BTN."' />"
                                                     . "</button>";
-                                                }else{
+                                                } else{
                                                     echo "<button type='submit' class='btn btn-xs btn-success'>"
                                                     . "<img style='width: 20px;' src='".SAVE_BTN."' />"
                                                     . "</button>";
                                                 }
-                                            }else{
+                                            } else{
                                                 //entrada e saída nunca editáveis
                                                 //checa se ja tem registro e se o dia está correto
                                                 if($ponto == array() && date('Y-m-d')==$dt->format("Y-m-d")){
@@ -140,17 +140,17 @@ if($_SESSION != array()){
                                                     //só registra saída se tiver registro de entrada
                                                     if($i==4){
                                                         if($entrada_yn){
-                                                           echo "<button type='submit' class='btn btn-xs btn-success'>"
+                                                            echo "<button type='submit' class='btn btn-xs btn-success'>"
                                                             . "<img style='width: 20px;' src='".SAVE_BTN."' />"
                                                             . "</button>";
-                                                        }else{
+                                                        } else{
                                                             echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="É necessário que o horário de entrada seja registrado.">'
                                                             . "<button disabled type='submit' class='btn btn-xs btn-danger'>"
                                                             . "<img style='width: 20px;' src='".SAVE_BTN."' />"
                                                             . "</button></span>";
                                                         }
                                                     //entrada
-                                                    }else{
+                                                    } else{
                                                         echo "<button type='submit' class='btn btn-xs btn-success'>"
                                                         . "<img style='width: 20px;' src='".SAVE_BTN."' />"
                                                         . "</button>";

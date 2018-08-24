@@ -1,25 +1,25 @@
 <?php
 
-	session_start();
+    session_start();
 	
-	include "php/conection.php";
-	include "php/querys.php";
+    include "php/conection.php";
+    include "php/querys.php";
 	
-	//protege entrada sem login
-	if(@$_SESSION == array()){
-		echo "<script>window.location.href='index.php';</script>";
-	}
+    //protege entrada sem login
+    if(@$_SESSION == array()){
+        echo "<script>window.location.href='index.php';</script>";
+    }
 	
-	@$id = $_SESSION['id_usuario'];
-	@$id_adm = $_SESSION['id_adm'];
+    @$id = $_SESSION['id_usuario'];
+    @$id_adm = $_SESSION['id_adm'];
 	
-	//print_r($_SESSION);
+    //print_r($_SESSION);
 	
-	$obra = obra($pdo);
+    $obra = obra($pdo);
 	
-	//echo "<pre>";
-	//print_r($equip_f);
-	//echo "</pre>";
+    //echo "<pre>";
+    //print_r($equip_f);
+    //echo "</pre>";
 	
 ?>
 <!DOCTYPE HTML>
@@ -76,7 +76,7 @@
 		</div>
 		-->
 		
-		<?php if(@$_SESSION['bloq_ger_usuario']!="1"){ ?>
+		<?php if (@$_SESSION['bloq_ger_usuario'] != "1") { ?>
 			<div class="panel panel-default">
 				<div style="font-size: 14pt; display: table; width: 100%" class="panel-heading">
 					Obras
@@ -121,9 +121,9 @@
 							</thead>
 							<tbody>
 								
-								<?php if(@$obra!=array()){?>
+								<?php if (@$obra != array()) {?>
 									
-									<?php foreach($obra as $index=>$key){ ?>
+									<?php foreach ($obra as $index=>$key) { ?>
 										
 										<tr style='background: #fff !important; border-bottom: 1px solid #ababab'>
 											<td>
@@ -160,7 +160,7 @@
 										
 									<?php } ?> 
 										
-								<?php }else{ ?>
+								<?php }else { ?>
 									
 									<tr>
 										<td colspan=24>
@@ -177,7 +177,7 @@
 					</div>
 				</div>
 			</div>
-		<?php }else{ ?>
+		<?php }else { ?>
 			<div class="panel panel-default">
 				<div class="panel-heading"><center><h2>USUARIO SOMENTE PARA CADASTRO</h3></center></div>
 			</div>

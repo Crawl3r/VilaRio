@@ -1,6 +1,6 @@
 <?php
 require './_app/Config.inc.php';
-if($_POST){
+if ($_POST) {
     $_SESSION['post_data'] = $_POST;
 }
 ?>
@@ -71,7 +71,7 @@ if($_POST){
         //MENU SUPERIOR
         
         //CONTEÚDO
-        if($Url[0]!=='cracha_impr'){
+        if ($Url[0] !== 'cracha_impr') {
             
             $Url[1] = (empty($Url[1]) ? HOME : $Url[1]);
             if (file_exists(REQUIRE_PATH . '/' . $Url[0] . '.php')):
@@ -80,7 +80,7 @@ if($_POST){
                 require REQUIRE_PATH . '/404.php';
             endif;
             
-        }else{
+        }else {
             echo '<script>window.location.href="' . HOME . '/cracha_impr.php";</script>';
         }
         //CONTEÚDO
