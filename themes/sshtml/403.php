@@ -1,3 +1,4 @@
+<?php $hack = 0; ?>
 <center>
     <div style="width: 400px;" class="panel panel-default">
         <div style="font-size: 14pt" class="panel-heading">

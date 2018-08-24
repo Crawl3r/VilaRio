@@ -1,3 +1,4 @@
+<?php $hack = 0; ?>
 <style>
 	.nav.navbar-nav > li.active a {
         border: 0;

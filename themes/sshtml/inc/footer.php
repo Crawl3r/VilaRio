@@ -1,3 +1,4 @@
+<?php $hack = 0; ?>
 <div class="navbar-fixed-bottom footer-1">
     <div class="container">
         <div class="row">
