@@ -30,8 +30,6 @@ if (isset($_SESSION)) {
         } else {
             require REQUIRE_PATH . '/404.php';
         }
-        endif;
-
         echo $Url[1];
         ?>
         <?php
