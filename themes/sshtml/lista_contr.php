@@ -1,17 +1,17 @@
 <?php
 	
-	$contratos = $crud->query('SELECT * FROM tb_contrato');
+    $contratos = $crud->query('SELECT * FROM tb_contrato');
     
 //    echo "<pre>";
 //    print_r($chamados);
 //    echo "</pre>";
 	
-	//protege de entrada sem ser ADM
+    //protege de entrada sem ser ADM
     if ($_SESSION != array()) {
         if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nome_usuario'] == 'Gisele') {
 
         }
-    } else {
+    }else {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
 	
@@ -68,7 +68,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($contratos as $index=>$key){  ?>
+                    <?php foreach ($contratos as $index=>$key) {  ?>
                     <form class="form from-inline" action="php/edita_contr.php" method="post">
                         <input type="hidden" name="id_contrato" value="<?= $key['id_contrato'] ?>" />
                         <tr>

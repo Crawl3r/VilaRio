@@ -2,32 +2,32 @@
 
 session_start();
 
-$dir = explode('\\',getcwd());
-if(end($dir)=='php'){
+$dir = explode('\\', getcwd());
+if (end($dir) == 'php') {
     include "./querys.php";
-}else{
+}else {
     include "php/querys.php";
 }
 
 $crud = new crud();
 
 //preenchimentos automáticos
-$usuario_l = $crud->pdo_src('usuario','WHERE ativo_usuario = 1');
-$empresa_l = $crud->pdo_src('empresa','');
+$usuario_l = $crud->pdo_src('usuario', 'WHERE ativo_usuario = 1');
+$empresa_l = $crud->pdo_src('empresa', '');
 
 //Rotas
-define('HOME','http://localhost/vila_ch');
-define('THEME','sshtml');
+define('HOME', 'http://localhost/vila_ch');
+define('THEME', 'sshtml');
 
 define('INCLUDE_PATH', HOME . '/themes/' . THEME);
-define('REQUIRE_PATH','themes/' . THEME);
+define('REQUIRE_PATH', 'themes/' . THEME);
 
 //IMAGENS PADRÃO
-define('LOGO_NAV',  INCLUDE_PATH."/img/logo_nav.png");
-define('LOGO_NORM', INCLUDE_PATH."/img/logo_norm.png");
-define('SAVE_BTN',  INCLUDE_PATH."/img/save.png");
-define('OK_BTN',  INCLUDE_PATH."/img/ok_icon.png");
-define('NO_BTN',  INCLUDE_PATH."/img/no_icon.png");
+define('LOGO_NAV', INCLUDE_PATH . "/img/logo_nav.png");
+define('LOGO_NORM', INCLUDE_PATH . "/img/logo_norm.png");
+define('SAVE_BTN', INCLUDE_PATH . "/img/save.png");
+define('OK_BTN', INCLUDE_PATH . "/img/ok_icon.png");
+define('NO_BTN', INCLUDE_PATH . "/img/no_icon.png");
 
 //CATEGORIAS
 $categorias = array(
@@ -40,7 +40,7 @@ $categorias = array(
     'Outros'
 );
 
-define('CAT_CH',$categorias);
+define('CAT_CH', $categorias);
 
 $CAT_CH = array(
     'Pagamentos',
@@ -62,7 +62,7 @@ $empresas_cr = array(
     'Vila Sul' => '6',
     'Forte Sul' => '7'
 );
-define('EMP_CR',$empresas_cr);
+define('EMP_CR', $empresas_cr);
 
 //VETORES EMPRESAS PONTO
 $emp_1 = array(

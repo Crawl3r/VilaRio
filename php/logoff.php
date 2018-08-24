@@ -1,14 +1,14 @@
 <?php
 
-	session_start();
+    session_start();
 	
-	include "../_app/Config.inc.php";
+    include "../_app/Config.inc.php";
 	
-	$info = $_POST;
+    $info = $_POST;
 	
-	session_destroy();
-	$_SESSION = array();
+    session_destroy();
+    $_SESSION = array();
 	
-	header("Location:../");
+    header("Location:../");
 	
 ?>

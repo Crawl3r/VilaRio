@@ -1,15 +1,15 @@
 <?php
 
-	session_start();
+    session_start();
 	
-	include "conection.php";
-	include "querys.php";
+    include "conection.php";
+    include "querys.php";
 	
-	$info = $_POST;
+    $info = $_POST;
 	
-	session_destroy();
-	$_SESSION = array();
+    session_destroy();
+    $_SESSION = array();
 	
-	header("Location:../index.php");
+    header("Location:../index.php");
 	
 ?>

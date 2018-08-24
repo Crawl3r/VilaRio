@@ -1,11 +1,11 @@
 <?php
 	
-	include "../_app/Config.inc.php";
+    include "../_app/Config.inc.php";
 	
-	$info = $_POST;
+    $info = $_POST;
 	
-	$crud->cadastra_usuario($info);
+    $crud->cadastra_usuario($info);
 	
-	header("Location:../lista_ger");
+    header("Location:../lista_ger");
 	
 ?>

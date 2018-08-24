@@ -20,20 +20,20 @@ if (isset($_FILES['foto_']['name']) && $_FILES["foto_"]["error"] == 0) {
         $novoNome = md5(microtime()) . $extensao;
 
         // cria o caminho
-        $info['foto_'] = "../themes/sshtml/media/func_".$novoNome;
+        $info['foto_'] = "../themes/sshtml/media/func_" . $novoNome;
 
         // tenta mover o arquivo para o destino
         if (move_uploaded_file($arquivo_tmp, $info['foto_'])) {
             //echo "Arquivo salvo com sucesso!";
-        } else {
+        }else {
             echo "<script>alert('Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita');</script>.";
             $info['foto_'] = "../images/default.jpg";
         }
-    } else {
+    }else {
         echo "<script>alert('Você poderá enviar apenas arquivos *.jpg; *.jpeg; *.gif; *.png;');</script>";
         $info['foto_'] = "../images/default.jpg";
     }
-} else {
+}else {
     echo "Você não enviou nenhum arquivo!";
     $info['foto_'] = "../themes/sshtml/media/default_u.png";
 }

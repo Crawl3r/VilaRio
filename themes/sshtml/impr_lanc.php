@@ -4,7 +4,7 @@ if ($_SESSION != array()) {
     if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nivel_usuario'] == 'usuario') {
         
     }
-} else {
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 
@@ -12,9 +12,9 @@ date_default_timezone_set('America/Sao_Paulo');
 
 $chamado = $crud->pdo_src_l('WHERE id_lanc=' . $_GET['id_l'])[0];
 
-$mes = explode("/",$chamado['mes_ano'])[0];
+$mes = explode("/", $chamado['mes_ano'])[0];
 
-switch ($mes){
+switch ($mes) {
  
     case "01": $mes = "jan"; $extenso = "JANEIRO"; break;
     case "02": $mes = "fev"; $extenso = "FEVEREIRO"; break;
@@ -32,12 +32,12 @@ switch ($mes){
 }
 
 //extras
-for($i=1;$i<=3;$i++){ 
-    @$tot_extra += $chamado['val_extra_'.$i];                   
+for ($i = 1; $i<=3; $i++) { 
+    @$tot_extra += $chamado['val_extra_' . $i];                   
 }
 
 //empresa
-@$empr = ${"emp_".$chamado['empresa']};
+@$empr = ${"emp_" . $chamado['empresa']};
 
 ?>
 <script>
@@ -108,7 +108,7 @@ for($i=1;$i<=3;$i++){
         <div>
             <h4><?= $empr[0] ?></h4>
             <h4>RELATÓRIO DE CARGA HORÁRIA</h4>
-            <h4>MÊS: <?= $extenso . "/" . explode("/",$chamado['mes_ano'])[1] ?></h4>
+            <h4>MÊS: <?= $extenso . "/" . explode("/", $chamado['mes_ano'])[1] ?></h4>
         </div>
     </center>
 
@@ -141,9 +141,9 @@ for($i=1;$i<=3;$i++){
                 <td colspan="2" class="text-center"><b>Observações</b></td>
             </tr>
             <?php $tot = 0;
-            for ($i = 1; $i < 32; $i++) { ?>
+            for ($i = 1; $i<32; $i++) { ?>
                 <tr class="dias" style="font-size: 0.85em;">
-                    <td class="text-center" style="padding: 0px !important;"><?= $i."/".$mes ?></td>
+                    <td class="text-center" style="padding: 0px !important;"><?= $i . "/" . $mes ?></td>
                     <td class="text-center" style="padding: 0px !important;"><?= $chamado['dia_' . $i] ?></td>
                     <td class="text-center" style="padding: 0px !important;"><?= $chamado['tipo_cobr'] ?></td>
                     <?php if ($i == 1) { ?>
@@ -158,14 +158,14 @@ for($i=1;$i<=3;$i++){
                             4 - CSSL pago pela contratante (xerox) <br /><br />
                             
                             <b>Outros:</b> <br /><br />
-                            <?php if($tot_extra==0 || $tot_extra==0.00){ ?>
+                            <?php if ($tot_extra == 0 || $tot_extra == 0.00) { ?>
                                 <br /><br />
-                            <?php } else { ?>
+                            <?php }else { ?>
                                 Valor de <b><?= "R$" . number_format($tot_extra, 2, ",", "") ?></b> 
                                 referente ao(s) seguinte(s) ponto(s): <br /><br />
-                                <?php for($j=1;$j<=3;$j++) { ?>
-                                    <?php if($chamado['descr_extra_'.$j]!="" || $chamado['val_extra_'.$j]!=0){ ?>
-                                        <ul><li><?= ucfirst($chamado['descr_extra_'.$j]) . " - R$" . $chamado['val_extra_'.$j] ?></li></ul>
+                                <?php for ($j = 1; $j<=3; $j++) { ?>
+                                    <?php if ($chamado['descr_extra_' . $j] != "" || $chamado['val_extra_' . $j] != 0) { ?>
+                                        <ul><li><?= ucfirst($chamado['descr_extra_' . $j]) . " - R$" . $chamado['val_extra_' . $j] ?></li></ul>
                                     <?php } ?>
                                 <?php } ?>
                                 <br />
@@ -195,7 +195,7 @@ for($i=1;$i<=3;$i++){
                 <td class="text-center"><?= $tot ?></td>
                 <td class="text-center">X</td>
                 <td class="text-center">R$<?= number_format($chamado['valor_h'], 2, ",", "") ?></td>
-                <td class="text-center"><?= "R$" . number_format($r1 = $tot * $chamado['valor_h'], 2, ",", "") ?></td>
+                <td class="text-center"><?= "R$" . number_format($r1 = $tot*$chamado['valor_h'], 2, ",", "") ?></td>
             </tr>
              <tr style="font-size: 0.85em;" class="<?= $tot_extra>=0 ? "success" : "warning" ?>">
                 <td>Extras</td>
@@ -204,7 +204,7 @@ for($i=1;$i<=3;$i++){
                 <td class="text-center">--</td>
                 <?php 
                 $re = $tot_extra;
-                $tot_extra < 0 ? $tot_extra="(R$".number_format($tot_extra*=(-1),2,",",".").")" : $tot_extra="R$".number_format($tot_extra,2,",",".")  ; 
+                $tot_extra<0 ? $tot_extra = "(R$" . number_format($tot_extra *= (-1), 2, ",", ".") . ")" : $tot_extra = "R$" . number_format($tot_extra, 2, ",", "."); 
                 ?>
                 <td class="text-center"><?= $tot_extra ?></td>
             </tr>
@@ -213,62 +213,62 @@ for($i=1;$i<=3;$i++){
                 <td class="text-center"><?= $chamado['desco'] ?></td>
                 <td class="text-center">X</td>
                 <td class="text-center">R$<?= number_format($chamado['valor_h'], 2, ",", "") ?></td>
-                <td class="text-center">(<?= "R$" . number_format($r2 = $chamado['desco'] * $chamado['valor_h'], 2, ",", "") ?>)</td>
+                <td class="text-center">(<?= "R$" . number_format($r2 = $chamado['desco']*$chamado['valor_h'], 2, ",", "") ?>)</td>
             </tr>
             <tr style="font-size: 0.85em;" class="success">
                 <td>Subtotal</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
-                <td class="text-center"><?= "R$" . number_format($r3 = $r1 - $r2 + $re, 2, ",", "") ?></td>
+                <td class="text-center"><?= "R$" . number_format($r3 = $r1-$r2+$re, 2, ",", "") ?></td>
             </tr>
             <tr style="font-size: 0.85em;" class="warning">
                 <td>Ret. 11% INSS</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
-                <td class="text-center">(<?= "R$" . number_format($s1 = $r3 * 0.11, 2, ",", "") ?>)</td>
+                <td class="text-center">(<?= "R$" . number_format($s1 = $r3*0.11, 2, ",", "") ?>)</td>
             </tr>
             <tr style="font-size: 0.85em;" class="warning">
                 <td>Ret. 065% Pis</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
-                <td class="text-center">(<?= "R$" . number_format($s2 = $r3 * 0.0065, 2, ",", "") ?>)</td>
+                <td class="text-center">(<?= "R$" . number_format($s2 = $r3*0.0065, 2, ",", "") ?>)</td>
             </tr>
             <tr style="font-size: 0.85em;" class="warning">
                 <td>Ret. 3% Cofins</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
-                <td class="text-center">(<?= "R$" . number_format($s3 = $r3 * 0.03, 2, ",", "") ?>)</td>
+                <td class="text-center">(<?= "R$" . number_format($s3 = $r3*0.03, 2, ",", "") ?>)</td>
             </tr>
             <tr style="font-size: 0.85em;" class="warning">
                 <td>Ret. 1% CSLL</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
-                <td class="text-center">(<?= "R$" . number_format($s4 = $r3 * 0.01, 2, ",", "") ?>)</td>
+                <td class="text-center">(<?= "R$" . number_format($s4 = $r3*0.01, 2, ",", "") ?>)</td>
             </tr>
             <tr style="font-size: 0.85em;" class="success">
                 <td>Valor da Fatura</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
                 <td class="text-center">--</td>
-                <td class="text-center"><b><?= "R$" . number_format($r3 - ($s1 + $s2 + $s3 + $s4), 2, ",", "") ?></b></td>
+                <td class="text-center"><b><?= "R$" . number_format($r3-($s1+$s2+$s3+$s4), 2, ",", "") ?></b></td>
             </tr>
 
             <tr style="font-size: 0.9em;">
                 <td class="text-center" colspan="5">
                     <b>
                         Valor total da fatura: R$
-                        <?= number_format($r3 - ($s1 + $s2 + $s3 + $s4), 2, ",", "") ?>
+                        <?= number_format($r3-($s1+$s2+$s3+$s4), 2, ",", "") ?>
                         &nbsp;- NF: 
                         <?= $chamado['nf'] ?>
                         &nbsp;- Emissão:&nbsp;
-                        <?= implode("/",array_reverse(explode("-",$chamado['d_emis']))) ?>
+                        <?= implode("/", array_reverse(explode("-", $chamado['d_emis']))) ?>
                         &nbsp;- Venc.:&nbsp;
-                        <?= implode("/",array_reverse(explode("-",$chamado['d_venc']))) ?>
+                        <?= implode("/", array_reverse(explode("-", $chamado['d_venc']))) ?>
                     </b>
                 </td>
             </tr>

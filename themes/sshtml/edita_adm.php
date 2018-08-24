@@ -1,15 +1,15 @@
 <?php
 	
-	//protege de entrada sem login
-	if($_SESSION != array()){
-		if($_SESSION['nivel_usuario']!='adm'){
-			echo "<script>window.location.href='" . HOME . "/403';</script>";
-		}
-	}else{
-		echo "<script>window.location.href='" . HOME . "/403';</script>";
-	}
+    //protege de entrada sem login
+    if($_SESSION != array()){
+        if($_SESSION['nivel_usuario']!='adm'){
+            echo "<script>window.location.href='" . HOME . "/403';</script>";
+        }
+    }else{
+        echo "<script>window.location.href='" . HOME . "/403';</script>";
+    }
 	
-	$adm = $crud->pdo_src('usuario','WHERE id_usuario = ' . $_GET['id']);
+    $adm = $crud->pdo_src('usuario','WHERE id_usuario = ' . $_GET['id']);
 	
 ?>
 		
@@ -31,7 +31,7 @@
                 <?php
                 foreach ($empresas_cr as $index => $key) {
                     echo "<option ";
-                    echo ($key===$adm[0]['empresa']) ? "selected" : "";
+                    echo ($key === $adm[0]['empresa']) ? "selected" : "";
                     echo " value=\"$key\">$index</option>";
                 }
                 ?>

@@ -2,10 +2,10 @@
 //protege de entrada sem ser ADM
 if ($_SESSION != array()) {
 
-} else {
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
-$funcionario = $crud->pdo_src('funcionario',' WHERE id_funcionario = ' . $_GET['id'] .' ');
+$funcionario = $crud->pdo_src('funcionario', ' WHERE id_funcionario = ' . $_GET['id'] . ' ');
 ?>
 <div class="panel panel-default">
     <div style="font-size: 14pt" class="panel-heading">Edição de Funcionário</div>
@@ -26,7 +26,7 @@ $funcionario = $crud->pdo_src('funcionario',' WHERE id_funcionario = ' . $_GET['
                             <?php
                             foreach ($empresas_cr as $index => $key) {
                                 echo "<option ";
-                                echo ($key===$funcionario[0]['empresa_funcionario']) ? "selected" : "";
+                                echo ($key === $funcionario[0]['empresa_funcionario']) ? "selected" : "";
                                 echo " value=\"$key\">$index</option>";
                             }
                             ?>

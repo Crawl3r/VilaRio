@@ -4,19 +4,19 @@
 $id_u = $_SESSION['id_usuario'];
 
 //usuários
-$usuario = $crud->query("SELECT * FROM tb_usuario WHERE id_usuario = ".$_GET['user'])[0];
+$usuario = $crud->query("SELECT * FROM tb_usuario WHERE id_usuario = " . $_GET['user'])[0];
 
 //empresa
-@$empr = ${"emp_".$usuario['empresa']};
+@$empr = ${"emp_" . $usuario['empresa']};
 
 //recolhe as datas 
 date_default_timezone_set('America/Sao_Paulo');
-$mes = isset($_GET['valor']) ? explode('-',$_GET['valor'])[1] : date('m');
-$ano = isset($_GET['valor']) ? explode('-',$_GET['valor'])[0] : date('Y');
+$mes = isset($_GET['valor']) ? explode('-', $_GET['valor'])[1] : date('m');
+$ano = isset($_GET['valor']) ? explode('-', $_GET['valor'])[0] : date('Y');
 $hora_c = date('H:i:s');
 
 //datas para o loop
-if(isset($_GET['valor']) && $_GET['valor']!=""){
+if (isset($_GET['valor']) && $_GET['valor'] != "") {
     
     $begin = new DateTime($_GET['valor']);
     $begin = $begin->modify("first day of this month");
@@ -28,7 +28,7 @@ if(isset($_GET['valor']) && $_GET['valor']!=""){
     $interval = DateInterval::createFromDateString('1 day');
     $period = new DatePeriod($begin, $interval, $end);
     
-}else{
+}else {
     
     $begin = new DateTime("first day of this month");
     
@@ -43,22 +43,22 @@ if(isset($_GET['valor']) && $_GET['valor']!=""){
 	
 //recolhe marcações do banco de dados
 
-if(isset($_GET['valor']) && $_GET['valor']!="" && isset($_GET['user']) && $_GET['user']!=""){
+if (isset($_GET['valor']) && $_GET['valor'] != "" && isset($_GET['user']) && $_GET['user'] != "") {
 
     $valor = $_GET['valor'];
     $user = $_GET['user'];
 		
-	//condição 1
+    //condição 1
     $cond1 = "WHERE id_usuario = '$user' ";
 	
 }
 	
 //protege de entrada sem login
-if($_SESSION != array()){
+if ($_SESSION != array()) {
     if ($_SESSION['nome_usuario'] != "Gisele") {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
-}else{
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 	
@@ -102,9 +102,9 @@ if($_SESSION != array()){
         <td class="text-right">
             Emissão: 
             <?php 
-            if(isset($_GET['data_emis']) && $_GET['data_emis']!=""){ 
+            if (isset($_GET['data_emis']) && $_GET['data_emis'] != "") { 
                 echo $_GET['data_emis']; 
-            }else{
+            }else {
                 echo $data = date('H:i d/m/Y');
             }
             ?>
@@ -159,7 +159,7 @@ if($_SESSION != array()){
             <b>Admissão:</b>
         </td>
         <td>
-            <?= implode("/",array_reverse(explode("-",$usuario['admissao']))) ?>
+            <?= implode("/", array_reverse(explode("-", $usuario['admissao']))) ?>
         </td>
     </tr>
 </table>
@@ -232,24 +232,24 @@ if($_SESSION != array()){
         </thead>
         <tbody>
             <?php 
-            if(isset($cond1)){
+            if (isset($cond1)) {
                 foreach ($period as $dt) { 
-                    $cond2 = "reg LIKE '%".$dt->format("Y-m-d")."%' ";
+                    $cond2 = "reg LIKE '%" . $dt->format("Y-m-d") . "%' ";
             ?>
                 <tr id="<?= $dt->format("d/m/Y"); ?>">
                     <td>
                         <?= $dt->format("d"); ?>
                     </td>
-                    <?php for($i=1;$i<=4;$i++){ ?>
+                    <?php for ($i = 1; $i<=4; $i++) { ?>
                         <td>
                             <?php 
                                 $cond3 = "tipo = $i";
                                 $ponto = $crud->query("SELECT reg FROM tb_reg_ponto $cond1 AND $cond2 AND $cond3 ");
-                                if($ponto != array()){
-                                    $registrado = explode(" ",$ponto[0]['reg'])[1];
+                                if ($ponto != array()) {
+                                    $registrado = explode(" ", $ponto[0]['reg'])[1];
                                 }
                             ?>
-                            <?= $ponto==array() ? "" : $registrado; ?>
+                            <?= $ponto == array() ? "" : $registrado; ?>
                             <?php //echo $ponto==array() ? "__:__:__" : $registrado; ?>
                         </td>
                     <?php } ?>
@@ -257,7 +257,7 @@ if($_SESSION != array()){
                 <tr>
             <?php 
                 } 
-            }else{
+            }else {
             ?>
                 <tr>
                     <td class="text-center" colspan="5">
@@ -273,14 +273,14 @@ if($_SESSION != array()){
 
 <?php
 
-if(isset($_GET['impr']) && $_GET['impr']=="0"){
+if (isset($_GET['impr']) && $_GET['impr'] == "0") {
     
-}else{
+}else {
     $link_atual = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $data = "\r\n" . $data . "---" . $link_atual;
 
     $my_file = './log/folhas.txt';
-    $handle = fopen($my_file, 'a') or die('Cannot open file:  '.$my_file);
+    $handle = fopen($my_file, 'a') or die('Cannot open file:  ' . $my_file);
     fwrite($handle, $data);
     fclose($handle);
 }

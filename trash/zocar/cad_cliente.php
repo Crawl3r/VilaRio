@@ -1,18 +1,18 @@
 <?php
 	
-	session_start();
+    session_start();
 	
-	include "php/conection.php";
-	include "php/querys.php";
+    include "php/conection.php";
+    include "php/querys.php";
 	
-	//protege entrada sem login
-	if(@$_SESSION == array()){
-		echo "<script>window.location.href='index.php';</script>";
-	}
+    //protege entrada sem login
+    if(@$_SESSION == array()){
+        echo "<script>window.location.href='index.php';</script>";
+    }
 	
-	$cliente = cliente($pdo);
+    $cliente = cliente($pdo);
 	
-	//print_r($_SESSION);
+    //print_r($_SESSION);
 	
 	
 ?>

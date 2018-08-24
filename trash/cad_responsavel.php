@@ -1,13 +1,13 @@
 <?php
 
-	session_start();
+    session_start();
 	
-	include "../_app/Config.inc.php";
+    include "../_app/Config.inc.php";
 	
-	$info = $_POST;
+    $info = $_POST;
 	
-	$crud->pdo_cadastro('responsavel', $info);
+    $crud->pdo_cadastro('responsavel', $info);
 	
-	header("Location:../lista_prop");
+    header("Location:../lista_prop");
 	
 ?>

@@ -2,11 +2,11 @@
 
 class lista_index extends crud {
 
-    public function desenha_aberta($campo,$valor) {
+    public function desenha_aberta($campo, $valor) {
         
-        if($campo!=='' && $valor!==''){
+        if ($campo !== '' && $valor !== '') {
             $chamados = $this->pdo_src_c("WHERE $campo LIKE '%$valor%' and status_chamado = 'aberto' ORDER BY status_chamado DESC, d_h_a_chamado ASC");
-        }else{
+        }else {
             $chamados = $this->pdo_src_c("WHERE status_chamado = 'aberto' ORDER BY status_chamado ASC, d_h_a_chamado DESC");
         }
         
@@ -50,13 +50,13 @@ class lista_index extends crud {
                             </thead>
                             <tbody>
         ";
-        if($chamados!==array()) {
+        if ($chamados !== array()) {
 
             foreach ($chamados as $key) {
                 $resp .= "<tr ";
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= 'class=\'clickable-row danger text-danger\' ';
-                } else {
+                }else {
                     $resp .= 'class=\'clickable-row info\' ';
                 }
                 $resp .= "data-href='" . HOME . '/edita_chamado?id_c=' . $key['id_chamado'] . "' >";
@@ -65,7 +65,7 @@ class lista_index extends crud {
                 
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= "<td class=text-danger style=\"white-space: nowrap;\"><b>";
-                }else{
+                }else {
                     $resp .= "<td class=text-primary style=\"white-space: nowrap;\"><b>";
                 }
                 $resp .= ucfirst($key['func_alvo_chamado']) . "</b></td>";
@@ -81,7 +81,7 @@ class lista_index extends crud {
                 
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= "<td class=text-danger><b>";
-                }else{
+                }else {
                     $resp .= "<td class=text-primary><b>";
                 }
                 $resp .= $key['categoria_chamado'];
@@ -89,13 +89,13 @@ class lista_index extends crud {
                 
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= "<td class=text-danger style=\"white-space: nowrap;\"><b>";
-                }else{
+                }else {
                     $resp .= "<td class=text-primary style=\"white-space: nowrap;\"><b>";
                 }
                 $resp .= $key['nome_empresa'] . "</b></td>";
                 
                 $key['desc_chamado'] = substr($key['desc_chamado'], 0, 70);
-                if( strlen($key['desc_chamado']) >= 70 ){
+                if (strlen($key['desc_chamado'])>=70) {
                     $key['desc_chamado'] .= "...<a>(Leia Mais)</a>";
                 }
                 
@@ -112,7 +112,7 @@ class lista_index extends crud {
                 }
                 $resp .= "</td></tr>";
             }
-        } else {
+        }else {
             $resp .= "<tr class=danger><td colspan=9>Nenhum chamado Registrado</td></tr>";
         }
 
@@ -127,11 +127,11 @@ class lista_index extends crud {
         return $resp;
     }
 	
-	public function desenha_fechada($campo,$valor) {
+    public function desenha_fechada($campo,$valor) {
         
         if($campo!=='' && $valor!==''){
             $chamados = $this->pdo_src_c("WHERE $campo LIKE '%$valor%' and status_chamado = 'fechado' ORDER BY status_chamado DESC, d_h_a_chamado ASC");
-        }else{
+        } else{
             $chamados = $this->pdo_src_c("WHERE status_chamado = 'fechado' ORDER BY status_chamado ASC, d_h_a_chamado DESC");
         }
         
@@ -175,13 +175,13 @@ class lista_index extends crud {
                             </thead>
                             <tbody>
         ";
-        if($chamados!==array()) {
+        if ($chamados !== array()) {
 
             foreach ($chamados as $key) {
                 $resp .= "<tr ";
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= 'class=\'clickable-row danger text-danger\' ';
-                } else {
+                }else {
                     $resp .= 'class=\'clickable-row info\' ';
                 }
                 $resp .= "data-href='" . HOME . '/edita_chamado?id_c=' . $key['id_chamado'] . "' >";
@@ -190,7 +190,7 @@ class lista_index extends crud {
                 
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= "<td class=text-danger style=\"white-space: nowrap;\"><b>";
-                }else{
+                }else {
                     $resp .= "<td class=text-primary style=\"white-space: nowrap;\"><b>";
                 }
                 $resp .= ucfirst($key['func_alvo_chamado']) . "</b></td>";
@@ -206,7 +206,7 @@ class lista_index extends crud {
                 
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= "<td class=text-danger><b>";
-                }else{
+                }else {
                     $resp .= "<td class=text-primary><b>";
                 }
                 $resp .= $key['categoria_chamado'];
@@ -214,13 +214,13 @@ class lista_index extends crud {
                 
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= "<td class=text-danger style=\"white-space: nowrap;\"><b>";
-                }else{
+                }else {
                     $resp .= "<td class=text-primary style=\"white-space: nowrap;\"><b>";
                 }
                 $resp .= $key['nome_empresa'] . "</b></td>";
                 
                 $key['desc_chamado'] = substr($key['desc_chamado'], 0, 70);
-                if( strlen($key['desc_chamado']) >= 70 ){
+                if (strlen($key['desc_chamado'])>=70) {
                     $key['desc_chamado'] .= "...<a>(Leia Mais)</a>";
                 }
                 
@@ -237,7 +237,7 @@ class lista_index extends crud {
                 }
                 $resp .= "</td></tr>";
             }
-        } else {
+        }else {
             $resp .= "<tr class=danger><td colspan=9>Nenhum chamado Registrado</td></tr>";
         }
 

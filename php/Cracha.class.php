@@ -263,9 +263,9 @@ class Cracha {
         echo self::$estilo;
     }
     
-    private static function quebra(){
+    private static function quebra() {
         self::$n_impr += 1;
-        if(self::$n_impr===8){
+        if (self::$n_impr === 8) {
             echo "<br><br><br><br><br>";
             self::$n_impr = 0;
         }
@@ -282,7 +282,7 @@ class Cracha {
                 <p class=\"cpf_t\"> " . $key['cpf_funcionario'] . " </p>
                 <p class=\"nome_t\"> " . $key['nome_funcionario'] . " </p>
                 <p class=\"cargo_t\"> " . $key['cargo_funcionario'] . " </p>
-                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'],1) . "\" />
+                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'], 1) . "\" />
             </div>";
 
             self::quebra();
@@ -300,7 +300,7 @@ class Cracha {
                 <p class=\"cpf_t\"> " . $key['cpf_funcionario'] . " </p>
                 <p class=\"nome_t\"> " . $key['nome_funcionario'] . " </p>
                 <p class=\"cargo_t\"> " . $key['cargo_funcionario'] . " </p>
-                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'],1) . "\" />
+                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'], 1) . "\" />
             </div>";
 
             self::quebra();
@@ -318,7 +318,7 @@ class Cracha {
                 <p class=\"cpf_t\"> " . $key['cpf_funcionario'] . " </p>
                 <p class=\"nome_t\"> " . $key['nome_funcionario'] . " </p>
                 <p class=\"cargo_t\"> " . $key['cargo_funcionario'] . " </p>
-                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'],1) . "\" />
+                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'], 1) . "\" />
             </div>";
 
             self::quebra();
@@ -336,7 +336,7 @@ class Cracha {
                 <p class=\"cpf_t\"> " . $key['cpf_funcionario'] . " </p>
                 <p style=\" width: 250px;  \"  class=\"nome_t\"> " . $key['nome_funcionario'] . " </p>
                 <p class=\"cargo_t\"> " . $key['cargo_funcionario'] . " </p>
-                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'],1) . "\" />
+                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'], 1) . "\" />
             </div>";
 
             self::quebra();
@@ -351,10 +351,10 @@ class Cracha {
             <div class=\"modelo modelo5\">
                 <p class=\"drtrj_v\"> " . $key['drtrj_funcionario'] . " </p>
                 <p class=\"cnv_v\"> " . $key['cnv_funcionario'] . " </p>
-                <p class=\"data_exp_v\"> " . implode("/",array_reverse(explode("-",$key['data_exp_funcionario']))) . " </p>
+                <p class=\"data_exp_v\"> " . implode("/", array_reverse(explode("-", $key['data_exp_funcionario']))) . " </p>
                 <p class=\"nome_v\"> " . $key['nome_funcionario'] . " </p>
                 <p class=\"cargo_v\"> " . $key['cargo_funcionario'] . " </p>
-                <img class=\"topo_v\" src=\"" . substr($key['foto_funcionario'],1) . "\" />
+                <img class=\"topo_v\" src=\"" . substr($key['foto_funcionario'], 1) . "\" />
             </div>";
 
             self::quebra();
@@ -372,7 +372,7 @@ class Cracha {
                 <p class=\"cpf_t\"> " . $key['cpf_funcionario'] . " </p>
                 <p class=\"nome_t\"> " . $key['nome_funcionario'] . " </p>
                 <p class=\"cargo_t\"> " . $key['cargo_funcionario'] . " </p>
-                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'],1) . "\" />
+                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'], 1) . "\" />
             </div>";
 
             self::quebra();
@@ -390,7 +390,7 @@ class Cracha {
                 <p class=\"cpf_t\"> " . $key['cpf_funcionario'] . " </p>
                 <p class=\"nome_t\"> " . $key['nome_funcionario'] . " </p>
                 <p class=\"cargo_t\"> " . $key['cargo_funcionario'] . " </p>
-                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'],1) . "\" />
+                <img class=\"topo_t\" src=\"" . substr($key['foto_funcionario'], 1) . "\" />
             </div>";
 
             self::quebra();

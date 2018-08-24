@@ -1,16 +1,16 @@
 <?php
 	
-	session_start();
+    session_start();
 	
-	include "php/conection.php";
-	include "php/querys.php";
+    include "php/conection.php";
+    include "php/querys.php";
 	
-	//protege entrada sem login
-	if(@$_SESSION == array()){
-		echo "<script>window.location.href='index.php';</script>";
-	}
+    //protege entrada sem login
+    if(@$_SESSION == array()){
+        echo "<script>window.location.href='index.php';</script>";
+    }
 	
-	//print_r($_SESSION);
+    //print_r($_SESSION);
 	
 	
 ?>
@@ -102,10 +102,10 @@
 						<select class="form-control" name="ano">
 							<option></option>
 							<?php
-								for($i=1950;$i<2099;$i++){
-									echo "<option>$i</option>";
-								}
-							?>
+                                for($i=1950;$i<2099;$i++){
+                                    echo "<option>$i</option>";
+                                }
+                            ?>
 						</select>
 					</div>
 					

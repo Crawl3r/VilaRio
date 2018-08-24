@@ -2,24 +2,24 @@
 
 class crud {
 	
-	private $mes;
+    private $mes;
 
     public function __construct() {
         
         //db = 'grupovilario_com_br_3';
         //$user = "grupovilari3";
         //$pass = "vilario12@";
-		//$host = "mysql.grupovilario.com.br";
+        //$host = "mysql.grupovilario.com.br";
 		
-		$this->mes = date("m");
+        $this->mes = date("m");
         
         $db = 'db_vila';
         $user = 'root';
         $pass = '';
-		$host = 'localhost';
+        $host = 'localhost';
 
         try {
-            $this->pdo = new PDO('mysql:host='.$host.';dbname='.$db.'', $user, $pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->pdo = new PDO('mysql:host=' . $host . ';dbname=' . $db . '', $user, $pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -30,7 +30,7 @@ class crud {
 
         if (method_exists($this, $name)) {
             return call_user_func_array(array($this, $name), $argument);
-        } else {
+        }else {
             throw new Exception("Método Não Acessível!", 1);
         }
     }
@@ -73,7 +73,7 @@ class crud {
         $sql = substr_replace($sql, "", -2);
         $sql .= ") VALUES (";
 
-        for ($i = 0; $i < $cont_param; $i++) {
+        for ($i = 0; $i<$cont_param; $i++) {
             $sql .= "?,";
         }
 
@@ -206,7 +206,7 @@ class crud {
         return $select->fetchAll();
     }
     
-     private function pdo_src_escala($mes) {
+        private function pdo_src_escala($mes) {
         
         //echo "<pre>";
         $sql = "SELECT "
@@ -231,7 +231,7 @@ class crud {
         //return $select->fetchAll();
     }
 	
-	private function query($query) {
+    private function query($query) {
         
         $select = $this->pdo->query($query);
         return $select->fetchAll();
@@ -239,8 +239,8 @@ class crud {
     
     private function edita_senha($id,$senha){
 		
-		try{
-			$prepara = $this->pdo->prepare("
+        try{
+            $prepara = $this->pdo->prepare("
 			UPDATE tb_usuario
 			SET
 				senha_usuario = ?
@@ -249,22 +249,22 @@ class crud {
 			
 			");
 			
-			$prepara->bindParam(1, $senha, PDO::PARAM_INT );
-			$prepara->bindParam(2, $id, PDO::PARAM_INT );
+            $prepara->bindParam(1, $senha, PDO::PARAM_INT );
+            $prepara->bindParam(2, $id, PDO::PARAM_INT );
 			
-			$prepara->execute();
+            $prepara->execute();
 			
-		}catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
-	    	die();
-		}
+        }catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
 		
-	}
+    }
     
     private function bloq_usuario($id,$status){
 		
-		try{
-			$remove = $this->pdo->query("
+        try{
+            $remove = $this->pdo->query("
 				UPDATE tb_usuario 
 				SET
 					ativo_usuario = '".$status."'
@@ -272,17 +272,17 @@ class crud {
 					id_usuario = '".$id."' 
 			");
 			
-		}catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
-	    	die();
-		}
+        }catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
 		
-	}
+    }
     
     private function edita_usuario($info){
 		
-		try{
-			$prepara = $this->pdo->prepare("
+        try{
+            $prepara = $this->pdo->prepare("
 			UPDATE tb_usuario
 			SET
                 nome_usuario = ?,
@@ -299,28 +299,28 @@ class crud {
 			");
 			
             $prepara->bindParam(1, $info['nome'], PDO::PARAM_INT );
-			$prepara->bindParam(2, $info['login'], PDO::PARAM_INT );
+            $prepara->bindParam(2, $info['login'], PDO::PARAM_INT );
             $prepara->bindParam(3, $info['setor'], PDO::PARAM_INT );
             $prepara->bindParam(4, $info['empresa'], PDO::PARAM_INT );
             $prepara->bindParam(5, $info['cargo'], PDO::PARAM_INT );
             $prepara->bindParam(6, $info['n_registro'], PDO::PARAM_INT );
             $prepara->bindParam(7, $info['ctps'], PDO::PARAM_INT );
             $prepara->bindParam(8, $info['admissao'], PDO::PARAM_INT );
-			$prepara->bindParam(9, $info['id'], PDO::PARAM_INT );
+            $prepara->bindParam(9, $info['id'], PDO::PARAM_INT );
 			
-			$prepara->execute();
+            $prepara->execute();
 			
-		}catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
-	    	die();
-		}
+        }catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
 		
-	}
+    }
     
     function cadastra_usuario($info){
 		
-		try{
-			$prepara = $this->pdo->prepare("
+        try{
+            $prepara = $this->pdo->prepare("
 			INSERT INTO tb_usuario
 			(	
                 nome_usuario,
@@ -344,8 +344,8 @@ class crud {
 			");
 			
             $prepara->bindParam(1, $info['nome'], PDO::PARAM_INT );
-			$prepara->bindParam(2, $info['login'], PDO::PARAM_INT );
-			$prepara->bindParam(3, $info['senha'], PDO::PARAM_INT );
+            $prepara->bindParam(2, $info['login'], PDO::PARAM_INT );
+            $prepara->bindParam(3, $info['senha'], PDO::PARAM_INT );
             $prepara->bindParam(4, $info['setor'], PDO::PARAM_INT );
             $prepara->bindParam(5, $info['empresa'], PDO::PARAM_INT );
             $prepara->bindParam(6, $info['cargo'], PDO::PARAM_INT );
@@ -353,14 +353,14 @@ class crud {
             $prepara->bindParam(8, $info['ctps'], PDO::PARAM_INT );
             $prepara->bindParam(9, $info['admissao'], PDO::PARAM_INT );
             
-			$prepara->execute();
+            $prepara->execute();
 			
-		}catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
-	    	die();
-		}
+        }catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
 		
-	}
+    }
     
     //MÉTODO DINÂMICO DE INSERÇÃO SQL CAMPO LIVRE
     //
@@ -384,7 +384,7 @@ class crud {
         $sql = substr_replace($sql, "", -2);
         $sql .= ") VALUES (";
 
-        for ($i = 0; $i < $cont_param; $i++) {
+        for ($i = 0; $i<$cont_param; $i++) {
             $sql .= "?,";
         }
 

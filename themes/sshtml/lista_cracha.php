@@ -2,40 +2,40 @@
 
 if(!isset($_GET['campo'])){
 	
-	$funcionarios = $crud->pdo_src('funcionario', 'ORDER BY nome_funcionario');
+    $funcionarios = $crud->pdo_src('funcionario', 'ORDER BY nome_funcionario');
 	
-}else if($_GET['campo']!="tb_empresa.nome_empresa"){
+} else if($_GET['campo']!="tb_empresa.nome_empresa"){
 	
-	$campo = $_GET['campo'];
-	$valor = $_GET['valor'];
+    $campo = $_GET['campo'];
+    $valor = $_GET['valor'];
 	
-	$sql = "
+    $sql = "
 		SELECT * FROM tb_funcionario
 		
 		WHERE $campo LIKE '%$valor%' ORDER BY nome_funcionario";
 		
-	$funcionarios = $crud->query($sql);
+    $funcionarios = $crud->query($sql);
 	
-}else if($_GET['valor']!=""){
+} else if($_GET['valor']!=""){
 	
-	$funcionarios = array();
+    $funcionarios = array();
 	
-	$funcionarios_t = $crud->pdo_src('funcionario', 'ORDER BY nome_funcionario');
+    $funcionarios_t = $crud->pdo_src('funcionario', 'ORDER BY nome_funcionario');
 	
-	foreach($funcionarios_t as $index => $key){
+    foreach($funcionarios_t as $index => $key){
 		
-		$key_e = array_search($key['empresa_funcionario'], $empresas_cr);
+        $key_e = array_search($key['empresa_funcionario'], $empresas_cr);
 		
-		$resp = strpos($key_e,$_GET['valor']);
+        $resp = strpos($key_e,$_GET['valor']);
 		
-		if($resp !== false){
-			$funcionarios[] = $key;
-		}
+        if($resp !== false){
+            $funcionarios[] = $key;
+        }
 		
-	}
+    }
 	
 }else{
-	$funcionarios = $crud->pdo_src('funcionario', 'ORDER BY nome_funcionario');
+    $funcionarios = $crud->pdo_src('funcionario', 'ORDER BY nome_funcionario');
 }
 
 //print_r($funcionarios);
@@ -46,7 +46,7 @@ if ($_SESSION != array()) {
 //    if (@$_SESSION['nivel_usuario'] === 'usuario') {
 //        echo "<script>window.location.href='" . HOME . "/403';</script>";
 //    }
-} else {
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 ?>
@@ -152,11 +152,11 @@ if ($_SESSION != array()) {
                                         Não
                                         </label>';
                                         
-                                        echo $key['impresso_yn_funcionario']==='1' ? $sim : $nao ;
+                                        echo $key['impresso_yn_funcionario'] === '1' ? $sim : $nao;
                                     ?>
                                 </td>
 								<td class="text-center">
-									<?= implode("/",array_reverse(explode("-",$key['data_exp_funcionario']))); ?>
+									<?= implode("/", array_reverse(explode("-", $key['data_exp_funcionario']))); ?>
 								</td>
                                 <td style="text-align: center;">
                                     <div class="btn-group" data-toggle="buttons">

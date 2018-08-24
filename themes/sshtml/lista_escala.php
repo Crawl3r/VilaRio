@@ -2,18 +2,18 @@
 	
     if(isset($_GET['mes'])){
         $mes = $_GET['mes'];
-    }else{
+    } else{
         $mes = str_replace("0","",date('m'));
     }
-	$funcionario_escala = $crud->pdo_src_escala($mes);
+    $funcionario_escala = $crud->pdo_src_escala($mes);
     $funcionarios = $crud->pdo_src('funcionario','ORDER BY nome_funcionario');
 	
-	//protege de entrada sem login
-	if($_SESSION != array()){
+    //protege de entrada sem login
+    if($_SESSION != array()){
         //pass
-	}else{
-		echo "<script>window.location.href='" . HOME . "/403';</script>";
-	}
+    }else{
+        echo "<script>window.location.href='" . HOME . "/403';</script>";
+    }
     
     switch ($mes){
  
@@ -46,12 +46,12 @@
                 <select onchange="this.form.submit();" class="form-control" name="mes">
                     <option></option>
                     <?php
-                    for ($i = 1; $i < 13; $i++) {
+                    for ($i = 1; $i<13; $i++) {
                         $a = date('Y');
-                        if(isset($_GET['mes'])){
-                            echo "<option " . (($i==$_GET['mes']) ? "selected" : "" ) . " >$i</option>";
-                        }else{
-                            echo "<option " . ((date('m')==$i) ? "selected" : "" ) . " >$i</option>";
+                        if (isset($_GET['mes'])) {
+                            echo "<option " . (($i == $_GET['mes']) ? "selected" : "") . " >$i</option>";
+                        }else {
+                            echo "<option " . ((date('m') == $i) ? "selected" : "") . " >$i</option>";
                         }
                         
                     }
@@ -63,7 +63,7 @@
     <div class="panel-body">
         
         <?php
-        if( @$_SESSION['setor_usuario']==='Operacional' || !isset($_SESSION['setor_usuario']) ){
+        if (@$_SESSION['setor_usuario'] === 'Operacional' || !isset($_SESSION['setor_usuario'])) {
         ?>
         <div class="panel panel-primary">
             <div style="font-size: 12pt" class="panel-heading">
@@ -122,7 +122,7 @@
                                     <select class="form-control" name="mes_">
                                         <option></option>
                                         <?php
-                                        for($i=1;$i<13;$i++){
+                                        for ($i = 1; $i<13; $i++) {
                                             $a = date('Y');
                                             echo "<option value=\"$i/$a\">$i</option>";
                                         }
@@ -231,8 +231,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($funcionario_escala as $index=>$key){ ?>
-                        <tr class="<?= $key['turno_escala']==='DIA' ? 'warning' : 'success' ?>">
+                    <?php foreach ($funcionario_escala as $index=>$key) { ?>
+                        <tr class="<?= $key['turno_escala'] === 'DIA' ? 'warning' : 'success' ?>">
                             <td>
                                 <?= $key['nome_funcionario'] ?>
                             </td>
@@ -244,8 +244,8 @@
                             </td>
                             <td>
                                 <?php 
-                                foreach($empresas_cr as $index=>$key_e){
-                                    if($key_e===$key['empresa_funcionario']){
+                                foreach ($empresas_cr as $index=>$key_e) {
+                                    if ($key_e === $key['empresa_funcionario']) {
                                         echo $index;
                                     }
                                 }
@@ -272,7 +272,7 @@
                             </td>
                             -->
                             <?php
-                            if( @$_SESSION['setor_usuario']==='Operacional' || !isset($_SESSION['setor_usuario']) ){
+                            if (@$_SESSION['setor_usuario'] === 'Operacional' || !isset($_SESSION['setor_usuario'])) {
                             ?>
                                 <td>
                                     <form action="php/remove_escala.php" method="POST" onsubmit="return confirm('Realmente deseja remover a escala?');">
@@ -288,7 +288,7 @@
                                 <form action="php/bloq_usuario.php" method="POST" onsubmit="return confirm('Realmente deseja bloquear o usuario?');">
                                     <input type="hidden" name="id" value="<?php echo $key['id_usuario'] ?>" />
                                     <button class="btn btn-default" value="<?php echo $key['id_usuario'] ?>">
-                                        <?php if($key['ativo_usuario']=="1"){echo 'bloquear';}else{echo 'desbloquear';} ?>
+                                        <?php if ($key['ativo_usuario'] == "1") {echo 'bloquear'; }else {echo 'desbloquear'; } ?>
                                     </button>
                                 </form>
                             </td>

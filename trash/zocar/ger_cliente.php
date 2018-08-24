@@ -1,45 +1,45 @@
 <?php
 
-	session_start();
+    session_start();
 	
-	include "php/conection.php";
-	include "php/querys.php";
+    include "php/conection.php";
+    include "php/querys.php";
 	
-	//protege entrada sem login
-	if(@$_SESSION == array()){
-		echo "<script>window.location.href='index.php';</script>";
-	}
+    //protege entrada sem login
+    if(@$_SESSION == array()){
+        echo "<script>window.location.href='index.php';</script>";
+    }
 	
-	@$id = $_SESSION['id_usuario'];
-	@$id_adm = $_SESSION['id_adm'];
+    @$id = $_SESSION['id_usuario'];
+    @$id_adm = $_SESSION['id_adm'];
 	
-	//print_r($_SESSION);
+    //print_r($_SESSION);
 	
-	$cliente = cliente($pdo);
-	$cliente_f = array();
+    $cliente = cliente($pdo);
+    $cliente_f = array();
 	
-	//limpa a matriz
-	$ok = 1;
-	foreach($cliente as $index=>$key){
-		foreach($key as $pont=>$row){
+    //limpa a matriz
+    $ok = 1;
+    foreach($cliente as $index=>$key){
+        foreach($key as $pont=>$row){
 	
-			if($ok==1){
-				$cliente_f[$index][$pont] = $row;
-				$ok = 0;
-			}else{
-				$ok = 1;
-			}
+            if($ok==1){
+                $cliente_f[$index][$pont] = $row;
+                $ok = 0;
+            }else{
+                $ok = 1;
+            }
 		
-		}
-	}
+        }
+    }
 	
-	foreach($cliente_f as $index=>$key){
-		unset($cliente_f[$index]['id_cliente']);
-	}
+    foreach($cliente_f as $index=>$key){
+        unset($cliente_f[$index]['id_cliente']);
+    }
 	
-	//echo "<pre>";
-	//print_r($cliente_f);
-	//echo "</pre>";
+    //echo "<pre>";
+    //print_r($cliente_f);
+    //echo "</pre>";
 	
 ?>
 <!DOCTYPE HTML>
@@ -96,7 +96,7 @@
 		</div>
 		-->
 		
-		<?php if(@$_SESSION['bloq_ger_usuario']!="1"){ ?>
+		<?php if (@$_SESSION['bloq_ger_usuario'] != "1") { ?>
 			<div class="panel panel-default">
 				<div style="font-size: 14pt; display: table; width: 100%" class="panel-heading">
 					Clientes
@@ -147,21 +147,21 @@
 									
 									<?php 
 									
-										foreach($cliente_f as $index=>$key){
-											echo "<tr style='background: #fff !important; border-bottom: 1px solid #ababab'>";
-											foreach($key as $pont=>$row){
-												if($pont=='valor_mes_equipamento'){
-													echo "<td>R$".utf8_encode(number_format($row,2,",",""))."</td>";
-												}else{
-													echo "<td>".utf8_encode($row)."</td>";
-												}
-											}
-											echo "</tr>";
-										} 
+                                        foreach($cliente_f as $index=>$key){
+                                            echo "<tr style='background: #fff !important; border-bottom: 1px solid #ababab'>";
+                                            foreach($key as $pont=>$row){
+                                                if($pont=='valor_mes_equipamento'){
+                                                    echo "<td>R$".utf8_encode(number_format($row,2,",",""))."</td>";
+                                                }else{
+                                                    echo "<td>".utf8_encode($row)."</td>";
+                                                }
+                                            }
+                                            echo "</tr>";
+                                        } 
 										
-									?>
+                                    ?>
 										
-								<?php }else{ ?>
+								<?php }else { ?>
 									
 									<tr>
 										<td colspan=24>
@@ -178,7 +178,7 @@
 					</div>
 				</div>
 			</div>
-		<?php }else{ ?>
+		<?php }else { ?>
 			<div class="panel panel-default">
 				<div class="panel-heading"><center><h2>USUARIO SOMENTE PARA CADASTRO</h3></center></div>
 			</div>

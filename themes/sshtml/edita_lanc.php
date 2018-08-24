@@ -4,7 +4,7 @@ if ($_SESSION != array()) {
     if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nome_usuario'] == 'Gisele') {
         
     }
-} else {
+}else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 
@@ -76,7 +76,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                         <label>Contrato: </label>
                         <select required class="form-control" name="id_contrato" />
                             <option></option>
-                            <?php foreach($contratos as $key){ ?>
+                            <?php foreach ($contratos as $key) { ?>
                                 <option <?= ($chamado['id_contrato'] == $key['id_contrato']) ? "selected" : "" ?> value="<?= $key['id_contrato'] ?>">
                                     <?= $key['local'] . " - CNPJ:" . $key['cnpj'] ?>
                                 </option>
@@ -91,9 +91,9 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                             <option></option>
                             <?php
                             foreach ($empresas_cr as $index => $key) {
-                                if($chamado['id_contrato']==$key){
+                                if ($chamado['id_contrato'] == $key) {
                                     echo "<option selected value=\"$key\">$index</option>";
-                                }else{
+                                }else {
                                     echo "<option value=\"$key\">$index</option>";
                                 }
                             }
@@ -170,7 +170,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                 <div class="row seven-cols">
 
                     <?php $tot = 0;
-                    for ($i = 1; $i < 32; $i++) { ?>
+                    for ($i = 1; $i<32; $i++) { ?>
                         <div class="col-md-1">
                             <label>Dia <?= $i ?>: </label>
                             <input class="form-control" type="number" name="dia_<?= $i ?>" value="<?= $chamado['dia_' . $i] ?>" />
@@ -180,20 +180,20 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
 
                 </div>
                 
-                <?php for($i=1;$i<=3;$i++){ @$tot_extra += $chamado['val_extra_'.$i]; ?>
+                <?php for ($i = 1; $i<=3; $i++) { @$tot_extra += $chamado['val_extra_' . $i]; ?>
                     <div class="row">
 
                          <div class="col-md-9">
 
                             <label>Outros <?=$i?>: </label>
-                            <input class="form-control" type="text" name="descr_extra_<?=$i?>" value="<?= $chamado['descr_extra_'.$i] ?>" />
+                            <input class="form-control" type="text" name="descr_extra_<?=$i?>" value="<?= $chamado['descr_extra_' . $i] ?>" />
 
                         </div>
 
                         <div class="col-md-3">
 
                             <label>Valor: </label>
-                            <input class="form-control" type="number" step=".01" name="val_extra_<?=$i?>" value="<?= $chamado['val_extra_'.$i] ?>" />
+                            <input class="form-control" type="number" step=".01" name="val_extra_<?=$i?>" value="<?= $chamado['val_extra_' . $i] ?>" />
 
                         </div>
 
@@ -221,7 +221,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                                 <td><?= $tot ?></td>
                                 <td>X</td>
                                 <td>R$<?= number_format($chamado['valor_h'], 2, ",", "") ?></td>
-                                <td><?= "R$" . number_format($r1 = $tot * $chamado['valor_h'], 2, ",", "") ?></td>
+                                <td><?= "R$" . number_format($r1 = $tot*$chamado['valor_h'], 2, ",", "") ?></td>
                             </tr>
                             
                              <tr class="<?= $tot_extra>=0 ? "success" : "warning" ?>">
@@ -231,7 +231,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                                 <td>--</td>
                                 <?php 
                                 $re = $tot_extra;
-                                $tot_extra < 0 ? $tot_extra="(R$".number_format($tot_extra*=(-1),2,",",".").")" : "" ; 
+                                $tot_extra<0 ? $tot_extra = "(R$" . number_format($tot_extra *= (-1), 2, ",", ".") . ")" : ""; 
                                 ?>
                                 <td><?= $tot_extra ?></td>
                             </tr>
@@ -241,14 +241,14 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                                 <td><?= $chamado['desco'] ?></td>
                                 <td>X</td>
                                 <td>R$<?= number_format($chamado['valor_h'], 2, ",", "") ?></td>
-                                <td>(<?= "R$" . number_format($r2 = $chamado['desco'] * $chamado['valor_h'], 2, ",", "") ?>)</td>
+                                <td>(<?= "R$" . number_format($r2 = $chamado['desco']*$chamado['valor_h'], 2, ",", "") ?>)</td>
                             </tr>
                             <tr class="success">
                                 <td>Subtotal</td>
                                 <td>--</td>
                                 <td>--</td>
                                 <td>--</td>
-                                <td><?= "R$" . number_format($r3 = $r1 - $r2 + $re, 2, ",", "") ?></td>
+                                <td><?= "R$" . number_format($r3 = $r1-$r2+$re, 2, ",", "") ?></td>
                             </tr>
 
                             <tr class="warning">
@@ -256,7 +256,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                                 <td>--</td>
                                 <td>--</td>
                                 <td>--</td>
-                                <td>(<?= "R$" . number_format($s1 = $r3 * 0.11, 2, ",", "") ?>)</td>
+                                <td>(<?= "R$" . number_format($s1 = $r3*0.11, 2, ",", "") ?>)</td>
                             </tr>
 
                             <tr class="warning">
@@ -264,7 +264,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                                 <td>--</td>
                                 <td>--</td>
                                 <td>--</td>
-                                <td>(<?= "R$" . number_format($s2 = $r3 * 0.0065, 2, ",", "") ?>)</td>
+                                <td>(<?= "R$" . number_format($s2 = $r3*0.0065, 2, ",", "") ?>)</td>
                             </tr>
 
                             <tr class="warning">
@@ -272,7 +272,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                                 <td>--</td>
                                 <td>--</td>
                                 <td>--</td>
-                                <td>(<?= "R$" . number_format($s3 = $r3 * 0.03, 2, ",", "") ?>)</td>
+                                <td>(<?= "R$" . number_format($s3 = $r3*0.03, 2, ",", "") ?>)</td>
                             </tr>
 
                             <tr class="warning">
@@ -280,7 +280,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                                 <td>--</td>
                                 <td>--</td>
                                 <td>--</td>
-                                <td>(<?= "R$" . number_format($s4 = $r3 * 0.01, 2, ",", "") ?>)</td>
+                                <td>(<?= "R$" . number_format($s4 = $r3*0.01, 2, ",", "") ?>)</td>
                             </tr>
 
                             <tr class="success">
@@ -288,7 +288,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                                 <td>--</td>
                                 <td>--</td>
                                 <td>--</td>
-                                <td><b><?= "R$" . number_format($r3 - ($s1 + $s2 + $s3 + $s4), 2, ",", "") ?></b></td>
+                                <td><b><?= "R$" . number_format($r3-($s1+$s2+$s3+$s4), 2, ",", "") ?></b></td>
                             </tr>
 
                         </tbody>

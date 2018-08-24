@@ -1,17 +1,17 @@
 <?php
 	
-	$chamados = $crud->pdo_src_l('ORDER BY d_emis ASC');
+    $chamados = $crud->pdo_src_l('ORDER BY d_emis ASC');
     
 //    echo "<pre>";
 //    print_r($chamados);
 //    echo "</pre>";
 	
-	//protege de entrada sem ser ADM
+    //protege de entrada sem ser ADM
     if ($_SESSION != array()) {
         if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nome_usuario'] == 'Gisele') {
 
         }
-    } else {
+    }else {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
 	
@@ -47,22 +47,22 @@
                 </thead>
                 <tbody>
                     <?php 
-                        foreach($chamados as $index=>$key){ 
+                        foreach ($chamados as $index=>$key) { 
                             
                             $un = 0;
-                            for($i=1; $i<32; $i++){
-                                $un += $key['dia_'.$i];
+                            for ($i = 1; $i<32; $i++) {
+                                $un += $key['dia_' . $i];
                             }
-                            $r1 = $un * $key['valor_h'];
-                            $r2 = $key['desco'] * $key['valor_h'];
-                            $r3 = $r1 - $r2;
+                            $r1 = $un*$key['valor_h'];
+                            $r2 = $key['desco']*$key['valor_h'];
+                            $r3 = $r1-$r2;
                             
                             $s1 = $r3*0.11;
                             $s2 = $r3*0.0065;
                             $s3 = $r3*0.03;
                             $s4 = $r3*0.01;
                             
-                            $tot = number_format($r3 - ($s1+$s2+$s3+$s4),2,",","");
+                            $tot = number_format($r3-($s1+$s2+$s3+$s4), 2, ",", "");
                     ?>
                         <tr class='clickable-row' data-href='<?= HOME . "/edita_lanc?id_l=" . $key['id_lanc']  ?>'>
                             <td>
@@ -76,8 +76,8 @@
                             </td>
                             <td>
                                 <?php 
-                                    $dh = explode(" ",$key['d_emis']);
-                                    echo implode('/',array_reverse(explode('-',$dh[0])));
+                                    $dh = explode(" ", $key['d_emis']);
+                                    echo implode('/', array_reverse(explode('-', $dh[0])));
                                 ?>
                             </td>
                             <td>

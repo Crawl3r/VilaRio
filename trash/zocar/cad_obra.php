@@ -1,18 +1,18 @@
 <?php
 	
-	session_start();
+    session_start();
 	
-	include "php/conection.php";
-	include "php/querys.php";
+    include "php/conection.php";
+    include "php/querys.php";
 	
-	//protege entrada sem login
-	if(@$_SESSION == array()){
-		echo "<script>window.location.href='index.php';</script>";
-	}
+    //protege entrada sem login
+    if(@$_SESSION == array()){
+        echo "<script>window.location.href='index.php';</script>";
+    }
 	
-	$loc = loc($pdo);
+    $loc = loc($pdo);
 	
-	//print_r($_SESSION);
+    //print_r($_SESSION);
 	
 	
 ?>
@@ -74,17 +74,17 @@
 						<select class="form-control" style="width: 270px" required name="locacao">
 							<option></option>
 							<?php
-								foreach($loc as $index=>$key){
+                                foreach($loc as $index=>$key){
 									
-									$cliente = clienteId($pdo,$key['id_cliente']);
+                                    $cliente = clienteId($pdo,$key['id_cliente']);
 									
-									$id = $key['id_locacao'];
-									$nome = $cliente[0]['nome_razao_cliente'];
+                                    $id = $key['id_locacao'];
+                                    $nome = $cliente[0]['nome_razao_cliente'];
 									
-									echo "<option value='$id'>$nome - $id</option>";
+                                    echo "<option value='$id'>$nome - $id</option>";
 									
-								}
-							?>
+                                }
+                            ?>
 						</select>
 					</div>
 					
