@@ -11,45 +11,7 @@ class lista_index extends crud {
         }
         
 
-        $resp = "
-            <div class='panel panel-default'>
-                <div style='font-size: 14pt' class='panel-heading'></div>
-                <div class='panel-body'>
-                    <div class='table-responsive'>
-                        <table class='table table-striped table-hover'>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Status:
-                                    </th>
-                                    <th class=text-primary>
-                                       Requerente:
-                                    </th>
-                                    <th>
-                                        Aberto por:
-                                    </th>
-                                    <th>
-                                        Abertura:
-                                    </th>
-                                    <th class=text-primary>
-                                        Categoria:
-                                    </th>
-                                    <th class=text-primary>
-                                        Empresa:
-                                    </th>
-                                    <th>
-                                        Desc:
-                                    </th>
-                                    <th>
-                                        Responsável:
-                                    </th>
-                                    <th>
-                                        Encerramento:
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-        ";
+        $resp = "<div class='panel panel-default'> <div style='font-size: 14pt' class='panel-heading'></div> <div class='panel-body'> <div class='table-responsive'> <table class='table table-striped table-hover'> <thead> <tr> <th> Status: </th> <th class=text-primary> Requerente: </th> <th> Aberto por: </th> <th> Abertura: </th> <th class=text-primary> Categoria: </th> <th class=text-primary> Empresa: </th> <th> Desc: </th> <th> Responsável: </th> <th> Encerramento: </th> </tr> </thead> <tbody>";
         if ($chamados !== array()) {
 
             foreach ($chamados as $key) {
@@ -117,12 +79,7 @@ class lista_index extends crud {
         }
 
 
-        $resp .= " </tbody>
-            </table>
-            </div>
-            </div>
-            </div>
-            ";
+        $resp .= "</tbody> </table> </div> </div> </div>";
 
         return $resp;
     }
@@ -136,45 +93,7 @@ class lista_index extends crud {
         }
         
 
-        $resp = "
-            <div class='panel panel-default'>
-                <div style='font-size: 14pt' class='panel-heading'></div>
-                <div class='panel-body'>
-                    <div class='table-responsive'>
-                        <table class='table table-striped table-hover'>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Status:
-                                    </th>
-                                    <th class=text-primary>
-                                       Requerente:
-                                    </th>
-                                    <th>
-                                        Aberto por:
-                                    </th>
-                                    <th>
-                                        Abertura:
-                                    </th>
-                                    <th class=text-primary>
-                                        Categoria:
-                                    </th>
-                                    <th class=text-primary>
-                                        Empresa:
-                                    </th>
-                                    <th>
-                                        Desc:
-                                    </th>
-                                    <th>
-                                        Responsável:
-                                    </th>
-                                    <th>
-                                        Encerramento:
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-        ";
+        $resp = "<div class='panel panel-default'> <div style='font-size: 14pt' class='panel-heading'></div> <div class='panel-body'> <div class='table-responsive'> <table class='table table-striped table-hover'> <thead> <tr> <th> Status: </th> <th class=text-primary> Requerente: </th> <th> Aberto por: </th> <th> Abertura: </th> <th class=text-primary> Categoria: </th> <th class=text-primary> Empresa: </th> <th> Desc: </th> <th> Responsável: </th> <th> Encerramento: </th> </tr> </thead> <tbody>";
         if ($chamados !== array()) {
 
             foreach ($chamados as $key) {
@@ -241,13 +160,7 @@ class lista_index extends crud {
             $resp .= "<tr class=danger><td colspan=9>Nenhum chamado Registrado</td></tr>";
         }
 
-
-        $resp .= " </tbody>
-            </table>
-            </div>
-            </div>
-            </div>
-            ";
+        $resp .= "</tbody> </table> </div> </div> </div>";
 
         return $resp;
     }
