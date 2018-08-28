@@ -1,15 +1,15 @@
 <?php
 
     //protege de entrada sem login
-    if($_SESSION != array()){
-        if(@$_SESSION['nivel_usuario']!='adm'){
+    if ($_SESSION != array()) {
+        if (@$_SESSION['nivel_usuario'] != 'adm') {
             echo "<script>window.location.href='" . HOME . "/403';</script>";
         }
-    }else{
+    }else {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
 	
-    $usuario = $crud->pdo_src('usuario','WHERE id_usuario = ' . $_POST['id']);
+    $usuario = $crud->pdo_src('usuario', 'WHERE id_usuario = ' . $_POST['id']);
 	
 ?>
 		

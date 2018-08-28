@@ -1,13 +1,13 @@
 <?php
 	
-    $usuarios = $crud->pdo_src('usuario','WHERE nivel_usuario = \'usuario\'');
+    $usuarios = $crud->pdo_src('usuario', 'WHERE nivel_usuario = \'usuario\'');
 	
     //protege de entrada sem login
-    if($_SESSION != array()){
-        if(@$_SESSION['nivel_usuario']==='usuario'){
+    if ($_SESSION != array()) {
+        if (@$_SESSION['nivel_usuario'] === 'usuario') {
             echo "<script>window.location.href='" . HOME . "/403';</script>";
         }
-    }else{
+    }else {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
 	
@@ -61,7 +61,7 @@
                                 <form action="php/bloq_usuario.php" method="POST" onsubmit="return confirm('Realmente deseja bloquear o usuario?');">
                                     <input type="hidden" name="id" value="<?php echo $key['id_usuario'] ?>" />
                                     <button class="btn btn-default" value="<?php echo $key['id_usuario'] ?>">
-                                        <?php if ($key['ativo_usuario'] == "1") {echo 'bloquear'; }else {echo 'desbloquear'; } ?>
+                                        <?php if ($key['ativo_usuario'] == "1") {echo 'bloquear'; } else {echo 'desbloquear'; } ?>
                                     </button>
                                 </form>
                             </td>

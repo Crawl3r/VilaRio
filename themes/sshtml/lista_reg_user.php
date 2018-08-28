@@ -22,7 +22,7 @@ if (isset($_GET['valor']) && $_GET['valor'] != "") {
     $interval = DateInterval::createFromDateString('1 day');
     $period = new DatePeriod($begin, $interval, $end);
     
-}else {
+} else {
     
     $begin = new DateTime("first day of this month");
     
@@ -52,9 +52,9 @@ foreach ($period_f as $dt) {
     $cond_f2 = "reg LIKE '%" . $dt->format('Y-m-d') . "%' ";
     $ponto_f = $crud->query("SELECT reg FROM tb_reg_ponto $cond1 AND $cond_f AND $cond_f2 ");
     
-    $reg = $dt->format('Y-m-d') . " 18:00:00" ;
+    $reg = $dt->format('Y-m-d') . " 18:00:00";
     
-    if($ponto_f == array()){
+    if ($ponto_f == array()) {
         $crud->query_void("INSERT INTO tb_reg_ponto (id_usuario,tipo,reg) VALUES ($id_u,4,'$reg') ");
     }
     
@@ -64,7 +64,7 @@ foreach ($period_f as $dt) {
 //protege de entrada sem login
 if ($_SESSION != array()) {
     
-}else {
+} else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 	
@@ -118,65 +118,65 @@ if ($_SESSION != array()) {
                 </thead>
                 <tbody>
                     <?php foreach ($period as $dt) { 
-                        $cond2 = "reg LIKE '%".$dt->format("Y-m-d")."%' ";
+                        $cond2 = "reg LIKE '%" . $dt->format("Y-m-d") . "%' ";
                     ?>
-                        <tr <?= date('Y-m-d')==$dt->format("Y-m-d") ? "class='success'" : "" ?> id="<?= $dt->format("d/m/Y"); ?>">
+                        <tr <?= date('Y-m-d') == $dt->format("Y-m-d") ? "class='success'" : "" ?> id="<?= $dt->format("d/m/Y"); ?>">
                             <td>
                                 <?= $dt->format("d/m/Y"); ?>
                             </td>
-                            <?php for($i=1;$i<=4;$i++){ ?>
+                            <?php for ($i = 1; $i<=4; $i++) { ?>
                                 <td>
                                     <?php 
                                         $cond3 = "tipo = $i";
                                         $ponto = $crud->query("SELECT reg FROM tb_reg_ponto $cond1 AND $cond2 AND $cond3 ");
-                                        if($ponto != array()){
-                                            $registrado = explode(" ",$ponto[0]['reg'])[1];
-                                            if($i==1){
+                                        if ($ponto != array()) {
+                                            $registrado = explode(" ", $ponto[0]['reg'])[1];
+                                            if ($i == 1) {
                                                 $entrada_yn = true;
                                             }
                                         }
                                     ?>
-                                    <form method="POST" class="form form-inline" action="<?= ($ponto==array() || ($i==2 || $i==3)) ? 'php/add_reg.php' : '' ; ?>">
+                                    <form method="POST" class="form form-inline" action="<?= ($ponto == array() || ($i == 2 || $i == 3)) ? 'php/add_reg.php' : ''; ?>">
                                         <input type="hidden" name="tipo" value="<?= $i ?>" />
                                         <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>" />
                                         <input type="hidden" name="dia" value="<?= $dt->format("Y-m-d") ?>" />
-                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto==array() ? date('H:i:s') : $registrado; ?>" 
-                                               <?= ($ponto==array() || ($i==2 || $i==3)) ? "" : "readonly" ; ?> 
-                                               <?= ($i==1 || $i==4) ? "readonly" : "" ; ?>/>
+                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto == array() ? date('H:i:s') : $registrado; ?>" 
+                                               <?= ($ponto == array() || ($i == 2 || $i == 3)) ? "" : "readonly"; ?> 
+                                               <?= ($i == 1 || $i == 4) ? "readonly" : ""; ?>/>
                                         <?php
                                             //intervalos sempre editáveis
-                                            if($i==2 || $i==3){
+                                            if ($i == 2 || $i == 3) {
                                                 //fica verdinho se ja tiver sido registrado e amarelo quando não
-                                                if($ponto == array()){
+                                                if ($ponto == array()) {
                                                     echo "<button type='submit' class='btn btn-xs btn-warning'>"
-                                                    . "<img style='width: 20px;' src='".SAVE_BTN."' />"
+                                                    . "<img style='width: 20px;' src='" . SAVE_BTN . "' />"
                                                     . "</button>";
-                                                } else{
+                                                }else {
                                                     echo "<button type='submit' class='btn btn-xs btn-success'>"
-                                                    . "<img style='width: 20px;' src='".SAVE_BTN."' />"
+                                                    . "<img style='width: 20px;' src='" . SAVE_BTN . "' />"
                                                     . "</button>";
                                                 }
-                                            } else{
+                                            }else {
                                                 //entrada e saída nunca editáveis
                                                 //checa se ja tem registro e se o dia está correto
-                                                if($ponto == array() && date('Y-m-d')==$dt->format("Y-m-d")){
+                                                if ($ponto == array() && date('Y-m-d') == $dt->format("Y-m-d")) {
                                                     //saída
                                                     //só registra saída se tiver registro de entrada
-                                                    if($i==4){
-                                                        if($entrada_yn){
+                                                    if ($i == 4) {
+                                                        if ($entrada_yn) {
                                                             echo "<button type='submit' class='btn btn-xs btn-success'>"
-                                                            . "<img style='width: 20px;' src='".SAVE_BTN."' />"
+                                                            . "<img style='width: 20px;' src='" . SAVE_BTN . "' />"
                                                             . "</button>";
-                                                        } else{
+                                                        }else {
                                                             echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="É necessário que o horário de entrada seja registrado.">'
                                                             . "<button disabled type='submit' class='btn btn-xs btn-danger'>"
-                                                            . "<img style='width: 20px;' src='".SAVE_BTN."' />"
+                                                            . "<img style='width: 20px;' src='" . SAVE_BTN . "' />"
                                                             . "</button></span>";
                                                         }
                                                     //entrada
-                                                    } else{
+                                                    }else {
                                                         echo "<button type='submit' class='btn btn-xs btn-success'>"
-                                                        . "<img style='width: 20px;' src='".SAVE_BTN."' />"
+                                                        . "<img style='width: 20px;' src='" . SAVE_BTN . "' />"
                                                         . "</button>";
                                                     }
                                                 }

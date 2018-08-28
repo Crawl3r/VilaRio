@@ -1,12 +1,12 @@
 <?php
 
     //protege de entrada sem ser ADM
-    if($_SESSION != array()){
-        if($_SESSION['nivel_usuario']=='adm'){	
-        }else{
+    if ($_SESSION != array()) {
+        if ($_SESSION['nivel_usuario'] == 'adm') {	
+        }else {
             echo "<script>window.location.href='" . HOME . "/403';</script>";
         }
-    }else{
+    }else {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
 	
@@ -16,8 +16,8 @@
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        for ($i = 0; $i<$length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength-1)];
         }
         return $randomString;
 	

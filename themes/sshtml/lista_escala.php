@@ -1,21 +1,21 @@
 <?php
 	
-    if(isset($_GET['mes'])){
+    if (isset($_GET['mes'])) {
         $mes = $_GET['mes'];
-    } else{
-        $mes = str_replace("0","",date('m'));
+    }else {
+        $mes = str_replace("0", "", date('m'));
     }
     $funcionario_escala = $crud->pdo_src_escala($mes);
-    $funcionarios = $crud->pdo_src('funcionario','ORDER BY nome_funcionario');
+    $funcionarios = $crud->pdo_src('funcionario', 'ORDER BY nome_funcionario');
 	
     //protege de entrada sem login
-    if($_SESSION != array()){
+    if ($_SESSION != array()) {
         //pass
-    }else{
+    }else {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
     
-    switch ($mes){
+    switch ($mes) {
  
         case 1: $mes = "JANEIRO"; break;
         case 2: $mes = "FEVEREIRO"; break;
@@ -50,7 +50,7 @@
                         $a = date('Y');
                         if (isset($_GET['mes'])) {
                             echo "<option " . (($i == $_GET['mes']) ? "selected" : "") . " >$i</option>";
-                        }else {
+                        } else {
                             echo "<option " . ((date('m') == $i) ? "selected" : "") . " >$i</option>";
                         }
                         
@@ -288,7 +288,7 @@
                                 <form action="php/bloq_usuario.php" method="POST" onsubmit="return confirm('Realmente deseja bloquear o usuario?');">
                                     <input type="hidden" name="id" value="<?php echo $key['id_usuario'] ?>" />
                                     <button class="btn btn-default" value="<?php echo $key['id_usuario'] ?>">
-                                        <?php if ($key['ativo_usuario'] == "1") {echo 'bloquear'; }else {echo 'desbloquear'; } ?>
+                                        <?php if ($key['ativo_usuario'] == "1") {echo 'bloquear'; } else {echo 'desbloquear'; } ?>
                                     </button>
                                 </form>
                             </td>

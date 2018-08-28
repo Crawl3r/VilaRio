@@ -25,7 +25,7 @@ if (isset($_GET['valor']) && $_GET['valor'] != "") {
     $interval = DateInterval::createFromDateString('1 day');
     $period = new DatePeriod($begin, $interval, $end);
     
-}else {
+} else {
     
     $begin = new DateTime("first day of this month");
     
@@ -55,7 +55,7 @@ if ($_SESSION != array()) {
     if ($_SESSION['nome_usuario'] != "Gisele") {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
-}else {
+} else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 	
@@ -89,7 +89,7 @@ if ($_SESSION != array()) {
                 foreach ($usuarios as $key) {
                     if ($_GET['user'] == $key['id_usuario']) {
                         echo "<option selected value=" . $key['id_usuario'] . ">" . $key['nome_usuario'] . "</option>";
-                    }else {
+                    } else {
                         echo "<option value=" . $key['id_usuario'] . ">" . $key['nome_usuario'] . "</option>";
                     }
                 }
@@ -141,7 +141,7 @@ if ($_SESSION != array()) {
                                     <?php 
                                         $cond3 = "tipo = $i";
                                         $ponto = $crud->query("SELECT reg FROM tb_reg_ponto $cond1 AND $cond2 AND $cond3 ");
-                                        $obs = $crud->query("SELECT * FROM tb_obs_dia $cond1 AND dia LIKE '%".$dt->format("Y-m-d")."%' ");
+                                        $obs = $crud->query("SELECT * FROM tb_obs_dia $cond1 AND dia LIKE '%" . $dt->format("Y-m-d") . "%' ");
                                         if ($ponto != array()) {
                                             $registrado = explode(" ", $ponto[0]['reg'])[1];
                                             if ($i == 1) {
@@ -154,14 +154,14 @@ if ($_SESSION != array()) {
                                         <input type="hidden" name="tipo" value="<?= $i ?>" />
                                         <input type="hidden" name="id_usuario" value="<?= $_GET['user'] ?>" />
                                         <input type="hidden" name="dia" value="<?= $dt->format("Y-m-d") ?>" />
-                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto==array() ? date('H:i:s') : $registrado; ?>" 
+                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto == array() ? date('H:i:s') : $registrado; ?>" 
                                                 />
                                         <?php
                                             if ($ponto == array()) {
                                                 echo "<button class='btn btn-xs btn-warning'>"
                                                 . "<img style='width: 20px;' src='" . NO_BTN . "' />"
                                                 . "</button>";
-                                            }else {
+                                            } else {
                                                 echo "<button class='btn btn-xs btn-success'>"
                                                 . "<img style='width: 20px;' src='" . OK_BTN . "' />"
                                                 . "</button>";
@@ -177,13 +177,13 @@ if ($_SESSION != array()) {
                                     <input type="hidden" name="dia" value="<?= $dt->format("Y-m-d") ?>" />
                                     <textarea lines="3" style="resize: none;" cols="40" class="form-control" 
                                               type="text" name="obs" placeholder="Observações" 
-                                              onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }"><?= $obs!=array() ? $obs[0]['obs'] : "" ?></textarea>
+                                              onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }"><?= $obs != array() ? $obs[0]['obs'] : "" ?></textarea>
                                 </form>
                             </td>
                         <tr>
                     <?php 
                         } 
-                    }else {
+                    } else {
                     ?>
                         <tr>
                             <td class="text-center" colspan="5">

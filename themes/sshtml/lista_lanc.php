@@ -11,7 +11,7 @@
         if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nome_usuario'] == 'Gisele') {
 
         }
-    }else {
+    } else {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
 	

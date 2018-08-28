@@ -38,12 +38,12 @@ if (isset($_FILES['caminho_']['name']) && $_FILES["caminho_"]["error"] == 0) {
             //retorna para a lista
             header("Location:../");   
             
-        }else {
+        } else {
             echo "<script>alert('Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita');</script>.";
         }
-    }else {
+    } else {
         echo "<script>alert('Você poderá enviar apenas arquivos *.jpg; *.jpeg; *.gif; *.png;');</script>";
     }
-}else {
+} else {
     echo "Você não enviou nenhum arquivo!";
 }

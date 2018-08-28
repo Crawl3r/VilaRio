@@ -28,7 +28,7 @@ if (isset($_GET['valor']) && $_GET['valor'] != "") {
     $interval = DateInterval::createFromDateString('1 day');
     $period = new DatePeriod($begin, $interval, $end);
     
-}else {
+} else {
     
     $begin = new DateTime("first day of this month");
     
@@ -58,7 +58,7 @@ if ($_SESSION != array()) {
     if ($_SESSION['nome_usuario'] != "Gisele") {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
-}else {
+} else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 	
@@ -104,7 +104,7 @@ if ($_SESSION != array()) {
             <?php 
             if (isset($_GET['data_emis']) && $_GET['data_emis'] != "") { 
                 echo $_GET['data_emis']; 
-            }else {
+            } else {
                 echo $data = date('H:i d/m/Y');
             }
             ?>
@@ -257,7 +257,7 @@ if ($_SESSION != array()) {
                 <tr>
             <?php 
                 } 
-            }else {
+            } else {
             ?>
                 <tr>
                     <td class="text-center" colspan="5">
@@ -275,7 +275,7 @@ if ($_SESSION != array()) {
 
 if (isset($_GET['impr']) && $_GET['impr'] == "0") {
     
-}else {
+} else {
     $link_atual = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $data = "\r\n" . $data . "---" . $link_atual;
 

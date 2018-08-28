@@ -33,9 +33,9 @@ if ($user !== array()) {
         $_SESSION = array_unique($user[0]);
 
         echo "<script>window.location.href='../';</script>";
-    } else {
+    }else {
         echo "<script>alert('Usuário Bloqueado!');window.location.href='../login';</script>";
     }
-} else {
+}else {
     echo "<script>alert('Usuário ou Senha incorretos!');window.location.href='../login';</script>";
 }

@@ -21,11 +21,11 @@
 	
     if ($obs == array()) {
         $crud->pdo_cadastro_l('obs_dia', $info);
-    }else {
+    } else {
         $info['id_o'] = $obs[0]['id_o'];
         $crud->pdo_edit_l('obs_dia', $info, 'id_o');
     }
 	
-    header("Location:../lista_reg_geral?user=".$_POST['id_usuario']."&valor=".$mes_r);
+    header("Location:../lista_reg_geral?user=" . $_POST['id_usuario'] . "&valor=" . $mes_r);
 	
 ?>

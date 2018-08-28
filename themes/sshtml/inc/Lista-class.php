@@ -6,7 +6,7 @@ class lista_index extends crud {
         
         if ($campo !== '' && $valor !== '') {
             $chamados = $this->pdo_src_c("WHERE $campo LIKE '%$valor%' and status_chamado = '$tipo' ORDER BY status_chamado DESC, d_h_a_chamado ASC");
-        }else {
+        } else {
             $chamados = $this->pdo_src_c("WHERE status_chamado = '$tipo' ORDER BY status_chamado ASC, d_h_a_chamado DESC");
         }
         
@@ -18,7 +18,7 @@ class lista_index extends crud {
                 $resp .= "<tr ";
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= 'class=\'clickable-row danger text-danger\' ';
-                }else {
+                } else {
                     $resp .= 'class=\'clickable-row info\' ';
                 }
                 $resp .= "data-href='" . HOME . '/edita_chamado?id_c=' . $key['id_chamado'] . "' >";
@@ -27,7 +27,7 @@ class lista_index extends crud {
                 
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= "<td class=text-danger style=\"white-space: nowrap;\"><b>";
-                }else {
+                } else {
                     $resp .= "<td class=text-primary style=\"white-space: nowrap;\"><b>";
                 }
                 $resp .= ucfirst($key['func_alvo_chamado']) . "</b></td>";
@@ -43,7 +43,7 @@ class lista_index extends crud {
                 
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= "<td class=text-danger><b>";
-                }else {
+                } else {
                     $resp .= "<td class=text-primary><b>";
                 }
                 $resp .= $key['categoria_chamado'];
@@ -51,7 +51,7 @@ class lista_index extends crud {
                 
                 if ($key['status_chamado'] === 'aberto') {
                     $resp .= "<td class=text-danger style=\"white-space: nowrap;\"><b>";
-                }else {
+                } else {
                     $resp .= "<td class=text-primary style=\"white-space: nowrap;\"><b>";
                 }
                 $resp .= $key['nome_empresa'] . "</b></td>";
@@ -74,7 +74,7 @@ class lista_index extends crud {
                 }
                 $resp .= "</td></tr>";
             }
-        }else {
+        } else {
             $resp .= "<tr class=danger><td colspan=9>Nenhum chamado Registrado</td></tr>";
         }
 

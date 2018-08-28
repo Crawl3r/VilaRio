@@ -4,7 +4,7 @@ if ($_SESSION != array()) {
     if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nome_usuario'] == 'Gisele') {
         
     }
-}else {
+} else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 
@@ -93,7 +93,7 @@ $chamado = $crud->pdo_src('lanc', 'WHERE id_lanc=' . $_GET['id_l'])[0];
                             foreach ($empresas_cr as $index => $key) {
                                 if ($chamado['id_contrato'] == $key) {
                                     echo "<option selected value=\"$key\">$index</option>";
-                                }else {
+                                } else {
                                     echo "<option value=\"$key\">$index</option>";
                                 }
                             }

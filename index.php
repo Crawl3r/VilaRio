@@ -76,11 +76,13 @@ if ($_POST) {
             $Url[1] = (empty($Url[1]) ? HOME : $Url[1]);
             if (file_exists(REQUIRE_PATH . '/' . $Url[0] . '.php')):
                 require REQUIRE_PATH . '/' . $Url[0] . '.php';
-            else:
+            else {
+                :
                 require REQUIRE_PATH . '/404.php';
+            }
             endif;
             
-        }else {
+        } else {
             echo '<script>window.location.href="' . HOME . '/cracha_impr.php";</script>';
         }
         //CONTEÚDO

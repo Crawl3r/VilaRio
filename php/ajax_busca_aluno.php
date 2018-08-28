@@ -74,7 +74,7 @@ if ($valor !== "") {
             }
             if ($matricula) {
                 echo substr_replace($e_matricula, '', -3);
-            }else {
+            } else {
                 echo "Sem Turma no momento";
             }
             echo "</td>";

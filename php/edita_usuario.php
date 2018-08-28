@@ -8,7 +8,7 @@ $crud->edita_usuario($info);
 
 if ($_SESSION['nivel_usuario'] == 'adm') {
     echo "<script>window.location.href='" . HOME . "/lista_ger';</script>";
-}else {
+} else {
     echo "<script>window.location.href='" . HOME . "/';</script>";
 }
 
