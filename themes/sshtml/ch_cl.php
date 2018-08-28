@@ -14,9 +14,9 @@ if ($_SESSION == array()) {
     $lista = new lista_index();
     
     if (isset($_GET['campo']) && isset($_GET['valor'])) {
-        $cat_u = $lista->desenha_fechada($_GET['campo'], $_GET['valor']);
+        $cat_u = $lista->desenha_lista($_GET['campo'], $_GET['valor'],'fechado');
     }else {
-        $cat_u = $lista->desenha_fechada('', '');
+        $cat_u = $lista->desenha_lista('', '','fechado');
     }
     
     
