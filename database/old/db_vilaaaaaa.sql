@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Ago-2018 às 15:17
+-- Generation Time: 23-Ago-2018 às 15:34
 -- Versão do servidor: 10.1.33-MariaDB
 -- PHP Version: 7.0.15
 
@@ -190,19 +190,6 @@ CREATE TABLE `tb_midia_ch` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_obs_dia`
---
-
-CREATE TABLE `tb_obs_dia` (
-  `id_o` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `dia` date NOT NULL,
-  `obs` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `tb_reg_ponto`
 --
 
@@ -240,7 +227,12 @@ CREATE TABLE `tb_usuario` (
 
 INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `login_usuario`, `senha_usuario`, `nivel_usuario`, `setor_usuario`, `ativo_usuario`, `empresa`, `cargo`, `n_registro`, `ctps`, `admissao`) VALUES
 (1, 'Administrador', 'admin', 'admin', 'adm', 'adm', 1, 0, '', '', '', '0000-00-00'),
-(2, 'Gisele', 'gisele', '123456', 'adm', '', 1, 6, 'chefe de departamento', '4564', '123121-rj', '2004-09-09');
+(6, 'Fabiane', 'Fabiane', '123', 'usuario', 'Simples', 1, 5, 'desk', '7878', '8787878', '2018-08-08'),
+(7, 'Tatiane', 'Tatiane', '123', 'usuario', 'Simples', 1, 0, '', '', '', '0000-00-00'),
+(8, 'Elis', 'Elis', '123', 'usuario', 'Simples', 1, 0, '', '', '', '0000-00-00'),
+(11, 'Priscila', 'priscila', '123', 'usuario', 'Simples', 1, 0, '', '', '', '0000-00-00'),
+(12, 'Valter', 'valter', '123', 'usuario', 'Simples', 1, 0, '', '', '', '0000-00-00'),
+(13, 'Gisele', 'gisele', '123456', 'adm', '', 1, 6, 'chefe de departamento', '4564', '123121-rj', '2004-09-09');
 
 --
 -- Indexes for dumped tables
@@ -288,12 +280,6 @@ ALTER TABLE `tb_lanc`
 --
 ALTER TABLE `tb_midia_ch`
   ADD PRIMARY KEY (`id_midia_ch`);
-
---
--- Indexes for table `tb_obs_dia`
---
-ALTER TABLE `tb_obs_dia`
-  ADD PRIMARY KEY (`id_o`);
 
 --
 -- Indexes for table `tb_reg_ponto`
@@ -347,15 +333,10 @@ ALTER TABLE `tb_lanc`
 ALTER TABLE `tb_midia_ch`
   MODIFY `id_midia_ch` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `tb_obs_dia`
---
-ALTER TABLE `tb_obs_dia`
-  MODIFY `id_o` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
 -- AUTO_INCREMENT for table `tb_reg_ponto`
 --
 ALTER TABLE `tb_reg_ponto`
-  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `tb_usuario`
 --

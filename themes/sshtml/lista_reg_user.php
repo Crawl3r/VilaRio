@@ -36,6 +36,30 @@ if (isset($_GET['valor']) && $_GET['valor'] != "") {
 
 //condição 1
 $cond1 = "WHERE id_usuario = '$id_u' ";
+
+//MECANISMO DE REGISTROS DE SAIDAS FALTANDO
+$begin_f = new DateTime("first day of this month");
+
+$end_f = new DateTime("now");
+
+$interval_f = DateInterval::createFromDateString('1 day');
+$period_f = new DatePeriod($begin_f, $interval_f, $end_f);
+
+$cond_f = "tipo = 4";
+
+foreach ($period_f as $dt) { 
+
+    $cond_f2 = "reg LIKE '%" . $dt->format('Y-m-d') . "%' ";
+    $ponto_f = $crud->query("SELECT reg FROM tb_reg_ponto $cond1 AND $cond_f AND $cond_f2 ");
+    
+    $reg = $dt->format('Y-m-d') . " 18:00:00" ;
+    
+    if($ponto_f == array()){
+        $crud->query_void("INSERT INTO tb_reg_ponto (id_usuario,tipo,reg) VALUES ($id_u,4,'$reg') ");
+    }
+    
+}
+//FIM REGISTROS FALTANDO
 	
 //protege de entrada sem login
 if ($_SESSION != array()) {

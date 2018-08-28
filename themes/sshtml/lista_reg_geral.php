@@ -121,6 +121,9 @@ if ($_SESSION != array()) {
                         <th>
                             Saída
                         </th>
+                        <th>
+                            Obs.
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -138,6 +141,7 @@ if ($_SESSION != array()) {
                                     <?php 
                                         $cond3 = "tipo = $i";
                                         $ponto = $crud->query("SELECT reg FROM tb_reg_ponto $cond1 AND $cond2 AND $cond3 ");
+                                        $obs = $crud->query("SELECT * FROM tb_obs_dia $cond1 AND dia LIKE '%".$dt->format("Y-m-d")."%' ");
                                         if ($ponto != array()) {
                                             $registrado = explode(" ", $ponto[0]['reg'])[1];
                                             if ($i == 1) {
@@ -145,16 +149,20 @@ if ($_SESSION != array()) {
                                             }
                                         }
                                     ?>
-                                    <form method="POST" class="form form-inline" onsubmit="return false;">
-                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto == array() ? /*date('H:i:s')*/"" : $registrado; ?>" 
-                                               readonly />
+                                    <form method="POST" class="form form-inline" action="php/add_reg_geral.php">
+                                        <input type="hidden" name="mes_retorno" value="<?= $_GET['valor'] ?>" />
+                                        <input type="hidden" name="tipo" value="<?= $i ?>" />
+                                        <input type="hidden" name="id_usuario" value="<?= $_GET['user'] ?>" />
+                                        <input type="hidden" name="dia" value="<?= $dt->format("Y-m-d") ?>" />
+                                        <input class="form-control" type="time" name="reg" step="1" value="<?= $ponto==array() ? date('H:i:s') : $registrado; ?>" 
+                                                />
                                         <?php
                                             if ($ponto == array()) {
-                                                echo "<button disabled class='btn btn-xs btn-warning'>"
+                                                echo "<button class='btn btn-xs btn-warning'>"
                                                 . "<img style='width: 20px;' src='" . NO_BTN . "' />"
                                                 . "</button>";
                                             }else {
-                                                echo "<button disabled class='btn btn-xs btn-success'>"
+                                                echo "<button class='btn btn-xs btn-success'>"
                                                 . "<img style='width: 20px;' src='" . OK_BTN . "' />"
                                                 . "</button>";
                                             }
@@ -162,6 +170,16 @@ if ($_SESSION != array()) {
                                     </form>
                                 </td>
                             <?php } $entrada_yn = 0; ?>
+                            <td>
+                                <form method="POST" class="form form-inline" action="php/add_obs_ponto.php">
+                                    <input type="hidden" name="mes_retorno" value="<?= $_GET['valor'] ?>" />
+                                    <input type="hidden" name="id_usuario" value="<?= $_GET['user'] ?>" />
+                                    <input type="hidden" name="dia" value="<?= $dt->format("Y-m-d") ?>" />
+                                    <textarea lines="3" style="resize: none;" cols="40" class="form-control" 
+                                              type="text" name="obs" placeholder="Observações" 
+                                              onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }"><?= $obs!=array() ? $obs[0]['obs'] : "" ?></textarea>
+                                </form>
+                            </td>
                         <tr>
                     <?php 
                         } 
