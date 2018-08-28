@@ -8,7 +8,7 @@ $func = $crud->pdo_src('funcionario', ' WHERE id_funcionario = ' . $_POST['id_']
 
 if (isset($_FILES['foto_']['name']) && $_FILES["foto_"]["error"] == 0) {
     include "up_foto_func.php";
-}else {
+} else {
     $info['foto_'] = $func[0]['foto_funcionario'];
 }
 

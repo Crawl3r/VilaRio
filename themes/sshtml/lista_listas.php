@@ -5,7 +5,7 @@ if ($_SESSION != array()) {
     if ($_SESSION['nome_usuario'] != "Gisele") {
         echo "<script>window.location.href='" . HOME . "/403';</script>";
     }
-}else {
+} else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 

@@ -4,7 +4,7 @@ if ($_SESSION != array()) {
     if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nivel_usuario'] == 'usuario') {
         
     } 
-}else {
+} else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 
@@ -19,7 +19,7 @@ $anexos = $crud->pdo_src('midia_ch', 'WHERE id_ch_midia_ch = ' . $_GET['id_c']);
 if ($chamado[0]['status_chamado'] === 'aberto') {
     $url = 'php/edita_chamado.php';
     $submit = '';
-}else {
+} else {
     $url = '#';
     $submit = 'disabled';
 }
@@ -55,7 +55,7 @@ if ($chamado[0]['status_chamado'] === 'aberto') {
                                 $nome = $key['nome_empresa'];
                                 if ($id === $chamado[0]['id_emp_chamado']) {
                                     echo "<option selected value=$id>$nome</option>";
-                                }else {
+                                } else {
                                     echo "<option value=$id>$nome</option>";
                                 }
                             }
@@ -73,7 +73,7 @@ if ($chamado[0]['status_chamado'] === 'aberto') {
                             foreach ($CAT_CH as $key) {
                                 if ($key === $chamado[0]['categoria_chamado']) {
                                     echo "<option selected value=\"$key\">$key</option>";
-                                }else {
+                                } else {
                                     echo "<option value=\"$key\">$key</option>";
                                 }
                             }
@@ -113,7 +113,7 @@ if ($chamado[0]['status_chamado'] === 'aberto') {
                                 $nome = $key['nome_usuario'];
                                 if ($id === $chamado[0]['id_func_f_chamado']) {
                                     echo "<option selected value=$id>$nome</option>";
-                                }else {
+                                } else {
                                     echo "<option value=$id>$nome</option>";
                                 }
                             }

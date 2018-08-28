@@ -4,7 +4,7 @@ if ($_SESSION != array()) {
     if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nivel_usuario'] == 'usuario') {
         
     }
-}else {
+} else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 
@@ -160,7 +160,7 @@ for ($i = 1; $i<=3; $i++) {
                             <b>Outros:</b> <br /><br />
                             <?php if ($tot_extra == 0 || $tot_extra == 0.00) { ?>
                                 <br /><br />
-                            <?php }else { ?>
+                            <?php } else { ?>
                                 Valor de <b><?= "R$" . number_format($tot_extra, 2, ",", "") ?></b> 
                                 referente ao(s) seguinte(s) ponto(s): <br /><br />
                                 <?php for ($j = 1; $j<=3; $j++) { ?>

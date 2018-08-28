@@ -30,7 +30,7 @@ class crud {
 
         if (method_exists($this, $name)) {
             return call_user_func_array(array($this, $name), $argument);
-        }else {
+        } else {
             throw new Exception("Método Não Acessível!", 1);
         }
     }
@@ -237,9 +237,9 @@ class crud {
         return $select->fetchAll();
     }
     
-    private function edita_senha($id,$senha){
+    private function edita_senha($id, $senha) {
 		
-        try{
+        try {
             $prepara = $this->pdo->prepare("
 			UPDATE tb_usuario
 			SET
@@ -249,39 +249,39 @@ class crud {
 			
 			");
 			
-            $prepara->bindParam(1, $senha, PDO::PARAM_INT );
-            $prepara->bindParam(2, $id, PDO::PARAM_INT );
+            $prepara->bindParam(1, $senha, PDO::PARAM_INT);
+            $prepara->bindParam(2, $id, PDO::PARAM_INT);
 			
             $prepara->execute();
 			
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
 		
     }
     
-    private function bloq_usuario($id,$status){
+    private function bloq_usuario($id, $status) {
 		
-        try{
+        try {
             $remove = $this->pdo->query("
 				UPDATE tb_usuario 
 				SET
-					ativo_usuario = '".$status."'
+					ativo_usuario = '".$status . "'
 				WHERE 
-					id_usuario = '".$id."' 
+					id_usuario = '".$id . "' 
 			");
 			
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
 		
     }
     
-    private function edita_usuario($info){
+    private function edita_usuario($info) {
 		
-        try{
+        try {
             $prepara = $this->pdo->prepare("
 			UPDATE tb_usuario
 			SET
@@ -298,28 +298,28 @@ class crud {
 			
 			");
 			
-            $prepara->bindParam(1, $info['nome'], PDO::PARAM_INT );
-            $prepara->bindParam(2, $info['login'], PDO::PARAM_INT );
-            $prepara->bindParam(3, $info['setor'], PDO::PARAM_INT );
-            $prepara->bindParam(4, $info['empresa'], PDO::PARAM_INT );
-            $prepara->bindParam(5, $info['cargo'], PDO::PARAM_INT );
-            $prepara->bindParam(6, $info['n_registro'], PDO::PARAM_INT );
-            $prepara->bindParam(7, $info['ctps'], PDO::PARAM_INT );
-            $prepara->bindParam(8, $info['admissao'], PDO::PARAM_INT );
-            $prepara->bindParam(9, $info['id'], PDO::PARAM_INT );
+            $prepara->bindParam(1, $info['nome'], PDO::PARAM_INT);
+            $prepara->bindParam(2, $info['login'], PDO::PARAM_INT);
+            $prepara->bindParam(3, $info['setor'], PDO::PARAM_INT);
+            $prepara->bindParam(4, $info['empresa'], PDO::PARAM_INT);
+            $prepara->bindParam(5, $info['cargo'], PDO::PARAM_INT);
+            $prepara->bindParam(6, $info['n_registro'], PDO::PARAM_INT);
+            $prepara->bindParam(7, $info['ctps'], PDO::PARAM_INT);
+            $prepara->bindParam(8, $info['admissao'], PDO::PARAM_INT);
+            $prepara->bindParam(9, $info['id'], PDO::PARAM_INT);
 			
             $prepara->execute();
 			
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
 		
     }
     
-    function cadastra_usuario($info){
+    function cadastra_usuario($info) {
 		
-        try{
+        try {
             $prepara = $this->pdo->prepare("
 			INSERT INTO tb_usuario
 			(	
@@ -343,19 +343,19 @@ class crud {
 			
 			");
 			
-            $prepara->bindParam(1, $info['nome'], PDO::PARAM_INT );
-            $prepara->bindParam(2, $info['login'], PDO::PARAM_INT );
-            $prepara->bindParam(3, $info['senha'], PDO::PARAM_INT );
-            $prepara->bindParam(4, $info['setor'], PDO::PARAM_INT );
-            $prepara->bindParam(5, $info['empresa'], PDO::PARAM_INT );
-            $prepara->bindParam(6, $info['cargo'], PDO::PARAM_INT );
-            $prepara->bindParam(7, $info['n_registro'], PDO::PARAM_INT );
-            $prepara->bindParam(8, $info['ctps'], PDO::PARAM_INT );
-            $prepara->bindParam(9, $info['admissao'], PDO::PARAM_INT );
+            $prepara->bindParam(1, $info['nome'], PDO::PARAM_INT);
+            $prepara->bindParam(2, $info['login'], PDO::PARAM_INT);
+            $prepara->bindParam(3, $info['senha'], PDO::PARAM_INT);
+            $prepara->bindParam(4, $info['setor'], PDO::PARAM_INT);
+            $prepara->bindParam(5, $info['empresa'], PDO::PARAM_INT);
+            $prepara->bindParam(6, $info['cargo'], PDO::PARAM_INT);
+            $prepara->bindParam(7, $info['n_registro'], PDO::PARAM_INT);
+            $prepara->bindParam(8, $info['ctps'], PDO::PARAM_INT);
+            $prepara->bindParam(9, $info['admissao'], PDO::PARAM_INT);
             
             $prepara->execute();
 			
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }

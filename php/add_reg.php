@@ -25,7 +25,7 @@
 	
     if ($ponto == array()) {
         $crud->pdo_cadastro_l('reg_ponto', $info);
-    }else {
+    } else {
         $info['id_rp'] = $ponto[0]['id_rp'];
         $crud->pdo_edit_l('reg_ponto', $info, 'id_rp');
     }

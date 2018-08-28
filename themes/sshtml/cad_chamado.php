@@ -4,7 +4,7 @@ if ($_SESSION != array()) {
     if (@$_SESSION['nivel_usuario'] == 'adm' || $_SESSION['nivel_usuario'] == 'usuario') {
         
     }
-}else {
+} else {
     echo "<script>window.location.href='" . HOME . "/403';</script>";
 }
 

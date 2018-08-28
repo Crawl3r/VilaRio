@@ -66,7 +66,7 @@ $cracha_venc = $crud->query('SELECT * FROM tb_funcionario WHERE NOW() > DATE_ADD
                                 <form action="php/bloq_usuario.php" method="POST" onsubmit="return confirm('Realmente deseja bloquear o usuario?');">
                                     <input type="hidden" name="id" value="<?php echo $key['id_usuario'] ?>" />
                                     <button class="btn btn-default" value="<?php echo $key['id_usuario'] ?>">
-                                        <?php if ($key['ativo_usuario'] == "1") {echo 'bloquear'; }else {echo 'desbloquear'; } ?>
+                                        <?php if ($key['ativo_usuario'] == "1") {echo 'bloquear'; } else {echo 'desbloquear'; } ?>
                                     </button>
                                 </form>
                             </td>

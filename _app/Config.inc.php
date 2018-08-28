@@ -5,7 +5,7 @@ session_start();
 $dir = explode('\\', getcwd());
 if (end($dir) == 'php') {
     include "./querys.php";
-}else {
+} else {
     include "php/querys.php";
 }
 
