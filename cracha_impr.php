@@ -5,6 +5,7 @@ include "_app/Config.inc.php";
 
 if (!isset($_SESSION['post_data'])) {
     echo "<script>window.close();</script>";
+    //teste
     //die();
 }
 
