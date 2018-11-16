@@ -36,14 +36,22 @@ if (isset($_FILES['caminho_']['name']) && $_FILES["caminho_"]["error"] == 0) {
             //fim------------------------------
             
             //retorna para a lista
-            header("Location:../");   
+            $id = $info['id_ch_'];
+			header("Location:../edita_chamado?id_c=$id");  
+			die();
             
         } else {
+			$id = $info['id_ch_'];
             echo "<script>alert('Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita');</script>.";
+			echo "<script>window.location = '../edita_chamado?id_c=$id';</script>.";
         }
     } else {
+		$id = $info['id_ch_'];
         echo "<script>alert('Você poderá enviar apenas arquivos *.jpg; *.jpeg; *.gif; *.png;');</script>";
+		echo "<script>window.location = '../edita_chamado?id_c=$id';</script>.";
     }
 } else {
-    echo "Você não enviou nenhum arquivo!";
+	$id = $info['id_ch_'];
+    echo "<script>alert('Você não enviou nenhum arquivo!');</script>";
+	echo "<script>window.location = '../edita_chamado?id_c=$id';</script>.";
 }

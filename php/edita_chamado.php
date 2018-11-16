@@ -15,4 +15,5 @@ $crud->pdo_edit('chamado', $info, 'id_');
 //fim------------------------------
 
 //retorna para a lista
-header("Location:../");
+$id = $info['id_'];
+header("Location:../edita_chamado?id_c=$id");

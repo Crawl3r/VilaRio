@@ -26,9 +26,17 @@
                             <li>
                                 <a href="<?= HOME; ?>/">Chamados Abertos</a>
                             </li>
+							
+							<li>
+                                <a href="<?= HOME; ?>/ch_resp">Chamados Respondidos</a>
+                            </li>
+							
+							<li>
+                                <a href="<?= HOME; ?>/ch_ag">Chamados Aguardando Fechamento</a>
+                            </li>
 
                             <li>
-                                <a href="<?= HOME; ?>/ch_cl">Chamados Concluídos</a>
+                                <a href="<?= HOME; ?>/ch_cl">Chamados Fechados</a>
                             </li>
 
                             <li>

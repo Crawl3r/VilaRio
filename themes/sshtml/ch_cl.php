@@ -31,6 +31,7 @@ if ($_SESSION == array()) {
                         <option value="tb_chamado.func_alvo_chamado">Funcionário Requerente</option>
                         <option value="tb_chamado.categoria_chamado">Categoria</option>
                         <option value="tb_empresa.nome_empresa">Empresa</option>
+						<option value="tb_chamado.d_h_a_chamado">Mês</option>
                     </select>
                     <input class="form-control" type="text" name="valor" placeholder="Valor da Pesquisa..." />
                     <button type="submit" class="btn btn-primary" style="margin-top: -10px">Pesquisar</button>

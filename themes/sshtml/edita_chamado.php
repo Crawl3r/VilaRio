@@ -16,7 +16,7 @@ $funcionarios = $crud->pdo_src('usuario', '');
 $chamado = $crud->pdo_src('chamado', 'WHERE id_chamado=' . $_GET['id_c']);
 $anexos = $crud->pdo_src('midia_ch', 'WHERE id_ch_midia_ch = ' . $_GET['id_c']);
 
-if ($chamado[0]['status_chamado'] === 'aberto') {
+if ($chamado[0]['status_chamado'] === 'aberto' || $chamado[0]['status_chamado'] === 'respondido' || $chamado[0]['status_chamado'] === 'aguardando') {
     $url = 'php/edita_chamado.php';
     $submit = '';
 } else {
@@ -150,7 +150,22 @@ if ($chamado[0]['status_chamado'] === 'aberto') {
                             ?>
                                 type="radio" value="fechado" name="status_" />Fechado
                         </label>
-
+						<label class="radio-inline">
+                            <input <?php
+                            if ($chamado[0]['status_chamado'] === 'respondido') {
+                                echo 'checked';
+                            }
+                            ?>
+                                type="radio" value="respondido" name="status_" />Resp.
+                        </label>
+						<label class="radio-inline">
+                            <input <?php
+                            if ($chamado[0]['status_chamado'] === 'aguardando') {
+                                echo 'checked';
+                            }
+                            ?>
+                                type="radio" value="aguardando" name="status_" />Aguardando Fech.
+                        </label>
                     </div>
 
                 </div>
@@ -159,7 +174,7 @@ if ($chamado[0]['status_chamado'] === 'aberto') {
                     <div class="col-md-12">
 
                         <label>Resposta: </label>
-                        <textarea required rows="8" class="form-control" name="resposta_"><?= $chamado[0]['resposta_chamado'] ?></textarea>
+                        <textarea rows="8" class="form-control" name="resposta_"><?= $chamado[0]['resposta_chamado'] ?></textarea>
 
                     </div>
                 </div>

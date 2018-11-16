@@ -13,10 +13,10 @@ if ($_SESSION == array()) {
 
     $lista = new lista_index();
     
-    if ($_GET !== array()) {
-        $cat_u = $lista->desenha_lista($_GET['campo'], $_GET['valor'], 'aberto');
+    if (isset($_GET['campo']) && isset($_GET['valor'])) {
+        $cat_u = $lista->desenha_lista($_GET['campo'], $_GET['valor'], 'respondido');
     }else {
-        $cat_u = $lista->desenha_lista('', '', 'aberto');
+        $cat_u = $lista->desenha_lista('', '', 'respondido');
     }
     
     
@@ -26,7 +26,7 @@ if ($_SESSION == array()) {
         <div class='panel panel-default'>
             <div style='font-size: 14pt' class='panel-heading'>Pesquisa</div>
             <div class='panel-body'>
-                <form class="form form-inline" method="GET" action="<?= HOME ?>">
+                <form class="form form-inline" method="GET" action="<?= HOME . "/ch_cl" ?>">
                     <select class="form-control" name="campo">
                         <option value="tb_chamado.func_alvo_chamado">Funcionário Requerente</option>
                         <option value="tb_chamado.categoria_chamado">Categoria</option>
